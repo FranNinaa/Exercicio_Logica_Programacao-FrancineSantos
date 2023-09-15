@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Exercicio 3 </legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label>Desenvolva um algoritmo que leia dois números 
+                    inteiros e mostre o somatório entre eles.</label>
+                <br>
+                <label for="nome">Digite um valor inteiro</label><br>
+                <input type="number" id="idValor1"  value="">
+                <br>
+                <label>Digite um valor inteiro</label><br>
+                <input type="number" id="idValor2" value="">
+                <br><br>
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="calcularSomatorio()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <input type="text" id="idSaida" name="nmSaida"> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calcularSomatorio() {
+            let valor1 = Number(document.getElementById('idValor1').value);
+            let valor2 = Number(document.getElementById('idValor2').value);
+
+                let somatorio = valor1 + valor2;
+                document.getElementById('idSaida').value = `A soma entre ${valor1} e ${valor2} é igual a ${somatorio}.`;
+           
+        }
+    </script>
+</body>
+
+</html>
