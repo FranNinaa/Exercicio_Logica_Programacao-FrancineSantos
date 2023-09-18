@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="icon" href="../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 2 - Exercicio 1</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="nome">Elabore um algoritmo que permita a entrada
+                     de dois números diferentes e verifique qual deles é o maior</label>
+                <br>
+                <label for="nome">Digite o primeiro valor:</label>
+                <input type="number" step="0.01" id="idNum1" nome="numero1" value="">
+                <br><br>
+                <label for="nome">Digite o segundo valor:</label>
+                <input type="number" step="0.01" id="idNum2" nome="numero2" value="">
+                <br><br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="maiorNumero()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function maiorNumero() {
+            // Obter o primeiro numero
+            var numero1 = Number(document.getElementById("idNum1").value);
+             // Obter o segundo numero
+             var numero2 = Number(document.getElementById("idNum2").value);
+
+
+           if(numero1 > numero2){ // Exibir o resultado na saída
+            document.getElementById("idSaida").innerText = "O numero " + numero1 + " é maior que o numero " + numero2;
+           }
+           else{ // Exibir o resultado na saída
+            document.getElementById("idSaida").innerText = "O numero " + numero2 + " é maior que o numero " + numero1;
+           }
+
+        }
+    </script>
+</body>
+</html>
