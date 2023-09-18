@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <legend class="borda">Exercicio 6 </legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label>Crie um algoritmo que leia um número real e mostre na 
+                    tela o seu dobro e sua terça parte..</label>
+                <br>
+                <label for="nome">Digite um numero com ponto flutuante:</label><br>
+                <input type="number" step="0.01" id="idNumero"  value="">
+                <br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="calcularDobroETerceParte()">
+                </section>
+                <br><br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calcularDobroETerceParte() {
+            // Obter o valor do número
+            var numero = parseFloat(document.getElementById("idNumero").value);
+
+            // Calcular dobro e terça parte
+            var dobro = numero * 2;
+            var tercaParte = numero / 3;
+
+            // Exibir o resultado na saída
+            document.getElementById("idSaida").innerText = "O dobro de " + numero.toFixed(2) + " é " + dobro.toFixed(2) +
+                "\nA terça parte de " + numero.toFixed(2) + " é " + tercaParte.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>
