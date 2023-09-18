@@ -17,28 +17,26 @@
     </header>
     <!---------------- Sessao Principal ---------------------->
     <main>
-        <form action="" mathod="post">
+        <form action="" method="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 2 </legend>
+                <legend class="borda">Exercicio 5 </legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label for="nome">Crie um programa que leia o nome e o 
-                    salário de um funcionário, mostrando no final uma mensagem.</label>
+                <label>Faça um programa que leia um número inteiro
+                     e mostre seu antecessor e seu sucessor.</label>
                 <br>
-                <label for="nome">Nome do Funcionario</label>
-                <input type="text" id="idNome"  value="">
+                <label for="nome">Digite um valor inteiro</label><br>
+                <input type="number" id="idValor"  value="">
                 <br>
-                <label for="nome">Salário</label>
-                <input type="text" id="idSalario"  value="">
-                <br><br>
+
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="pegarNome()">
+                    <input type="button" value="Enviar" onclick="antecessorSucessor()">
                 </section>
                 <br>
                 <div>
                     <label for="idSaida">Saida</label>
-                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                    <output type="text" id="idSaida" name="nmSaida"></output>
                 </div>
 
                 <br>
@@ -51,14 +49,10 @@
     </footer>
 
      <!---------------- Script JS  ---------------------->
+     
      <script>
-        function pegarNome() {
-            let nome = document.getElementById('idNome').value;
-            let salario = document.getElementById('idSalario').value;
-
-                const mensagem = `O funcionário ${nome} tem um salário de R$${salario} em Junho.`;
-                document.getElementById('idSaida').value = mensagem;
-        }
+        
     </script>
 </body>
+
 </html>
