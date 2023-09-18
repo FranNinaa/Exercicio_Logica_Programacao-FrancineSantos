@@ -18,28 +18,28 @@
     </header>
     <!---------------- Sessao Principal ---------------------->
     <main>
-        <form action="" method="post">
+        <form action="" mathod="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 4 </legend>
+                <legend class="borda">Exercicio 2 </legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label>Faça um programa que leia as duas notas de um aluno em uma
-                     matéria e mostre na tela a sua mídia na disciplina..</label>
+                <label for="nome">Crie um programa que leia o nome e o 
+                    salário de um funcionário, mostrando no final uma mensagem.</label>
                 <br>
-                <label for="nome">Digite a primeira Nota:</label><br>
-                <input type="number" id="idNota1"  value="">
+                <label for="nome">Nome do Funcionario</label>
+                <input type="text" id="idNome" nome="nNome" value="">
                 <br>
-                <label>Digite a segunda nota:</label><br>
-                <input type="number" id="idNota2" value="">
+                <label for="nome">Salário</label>
+                <input type="text" id="idSalario" nome="vSalario"  value="">
                 <br><br>
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="calcularMedia()">
+                    <input type="button" value="Enviar" onclick="pegarNome()">
                 </section>
                 <br>
                 <div>
                     <label for="idSaida">Saida</label>
-                    <output type="text" id="idSaida" name="nmSaida"></output>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
                 </div>
 
                 <br>
@@ -52,20 +52,14 @@
     </footer>
 
      <!---------------- Script JS  ---------------------->
-     
      <script>
-        function calcularMedia() {
-            // Obter os valores das notas
-            var nota1 = parseFloat(document.getElementById("idNota1").value);
-            var nota2 = parseFloat(document.getElementById("idNota2").value);
+        function pegarNome() {
+            let nome = document.getElementById('idNome').value;
+            let salario = document.getElementById('idSalario').value;
 
-            // Calcular a média
-            var media = (nota1 + nota2) / 2;
-
-            // Exibir a média na saída
-            document.getElementById("idSaida").innerText = "A média entre " + nota1 + " e " + nota2 + " é igual a " + media;
+                const mensagem = `O funcionário ${nome} tem um salário de R$${salario} em Junho.`;
+                document.getElementById('idSaida').value = mensagem;
         }
     </script>
 </body>
-
 </html>

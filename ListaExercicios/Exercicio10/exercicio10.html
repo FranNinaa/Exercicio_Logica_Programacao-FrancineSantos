@@ -18,26 +18,25 @@
     </header>
     <!---------------- Sessao Principal ---------------------->
     <main>
-        <form action="" method="post">
+        <form action="" mathod="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 6 </legend>
+                <legend class="borda">Exercicio 10</legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label>Crie um algoritmo que leia um número real e mostre na 
-                    tela o seu dobro e sua terça parte..</label>
+                <label for="nome">Crie um programa que leia o preço de um produto,
+                     calcule e mostre seu PREÇO PROMOCIONAL, com 5% de desconto.</label>
                 <br>
-                <label for="nome">Digite um numero com ponto flutuante:</label><br>
-                <input type="number" step="0.01" id="idNumero"  value="">
-                <br>
-
+                <label for="nome">Informe ao preço atual do produto:</label>
+                <input type="number" step="0.01" id="idPreco" nome="preco" value="">
+                <br><br>
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="calcularDobroETerceParte()">
+                    <input type="button" value="Enviar" onclick="calcularPrecoPromocional()">
                 </section>
-                <br><br>
+                <br>
                 <div>
                     <label for="idSaida">Saida</label>
-                    <output type="text" id="idSaida" name="nmSaida"></output>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
                 </div>
 
                 <br>
@@ -51,19 +50,17 @@
 
      <!---------------- Script JS  ---------------------->
      <script>
-        function calcularDobroETerceParte() {
-            // Obter o valor do número
-            var numero = parseFloat(document.getElementById("idNumero").value);
+        function calcularPrecoPromocional() {
+            // Obter o preço atual do produto
+            var precoAtual = Number(document.getElementById("idPreco").value);
 
-            // Calcular dobro e terça parte
-            var dobro = numero * 2;
-            var tercaParte = numero / 3;
+            // Calcular o preço promocional com 5% de desconto
+            var desconto = precoAtual * 0.05;
+            var precoPromocional = precoAtual - desconto;
 
             // Exibir o resultado na saída
-            document.getElementById("idSaida").innerText = "O dobro de " + numero.toFixed(2) + " é " + dobro.toFixed(2) +
-                "\nA terça parte de " + numero.toFixed(2) + " é " + tercaParte.toFixed(2);
+            document.getElementById("idSaida").innerText = "Preço promocional com 5% de desconto: R$ " + precoPromocional.toFixed(2);
         }
     </script>
 </body>
-
 </html>

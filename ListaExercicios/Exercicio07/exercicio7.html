@@ -9,7 +9,6 @@
     <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <!---------------- Area de Cabeçalho ---------------------->
     <header>
@@ -19,19 +18,19 @@
     <main>
         <form action="" method="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 8</legend>
+                <legend class="borda">Exercicio 7 </legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label>Faça um algoritmo que leia quanto dinheiro uma pessoa tem na carteira 
-                    (em R$) e mostre quantos dólares ela pode comprar. Considere US$ 1,00 = R$ 3,45.</label>
+                <label>Desenvolva um programa que leia uma distância em metrôs 
+                    e mostre os valores relativos a outras medidas.</label>
                 <br>
-                <label for="nome"> Digite o valor que você tem em sua carteira:</label><br>
-                <input type="number" step="0.01" id="idValor"  value="">
+                <label for="nome"> Digite uma distância em metros:</label><br>
+                <input type="number" step="0.01" nome="distancia" id="idValorMetros"  value="">
                 <br>
 
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="calcularValorCarteira()">
+                    <input type="button" value="Enviar" onclick="calcularValorRelativo()">
                 </section>
                 <br><br>
                 <div>
@@ -50,15 +49,26 @@
 
      <!---------------- Script JS  ---------------------->
      <script>
-        function calcularValorCarteira() {
-            // Obter o valor em reais
-            var valorReais = parseFloat(document.getElementById("idValor").value);
+        function calcularValorRelativo() {
+            // Obter o valor da distância em metros
+            var metros = parseFloat(document.getElementById("idValorMetros").value);
 
-            // Calcular a quantidade de dólares
-            var valorDolares = valorReais / 3.45;
+            // Calcular os valores relativos a outras medidas
+            var quilometros = metros / 1000;
+            var hectometros = metros / 100;
+            var decametros = metros / 10;
+            var decimetros = metros * 10;
+            var centimetros = metros * 100;
+            var milimetros = metros * 1000;
 
-            // Exibir o resultado na saída
-            document.getElementById("idSaida").innerText = "Com R$ " + valorReais.toFixed(2) + " você pode comprar aproximadamente US$ " + valorDolares.toFixed(2);
+            // Exibir os resultados na saída
+            document.getElementById("idSaida").innerText = "A distância de " + metros.toFixed(2) + "m corresponde a:" +
+                "\n" + quilometros.toFixed(5) + "Km" +
+                "\n" + hectometros.toFixed(4) + "Hm" +
+                "\n" + decametros.toFixed(3) + "Dam" +
+                "\n" + decimetros.toFixed(1) + "dm" +
+                "\n" + centimetros.toFixed(1) + "cm" +
+                "\n" + milimetros.toFixed(1) + "mm";
         }
     </script>
 </body>

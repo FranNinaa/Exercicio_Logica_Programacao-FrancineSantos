@@ -18,23 +18,23 @@
     </header>
     <!---------------- Sessao Principal ---------------------->
     <main>
-        <form action="" mathod="post">
+        <form action="" method="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 3 </legend>
+                <legend class="borda">Exercicio 4 </legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label>Desenvolva um algoritmo que leia dois números 
-                    inteiros e mostre o somatório entre eles.</label>
+                <label>Faça um programa que leia as duas notas de um aluno em uma
+                     matéria e mostre na tela a sua mídia na disciplina..</label>
                 <br>
-                <label for="nome">Digite um valor inteiro</label><br>
-                <input type="number" id="idValor1"  value="">
+                <label for="nome">Digite a primeira Nota:</label><br>
+                <input type="number" id="idNota1" nome="nota1" value="">
                 <br>
-                <label>Digite um valor inteiro</label><br>
-                <input type="number" id="idValor2" value="">
+                <label>Digite a segunda nota:</label><br>
+                <input type="number" id="idNota2" nome="valor2" value="">
                 <br><br>
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="calcularSomatorio()">
+                    <input type="button" value="Enviar" onclick="calcularMedia()">
                 </section>
                 <br>
                 <div>
@@ -52,14 +52,18 @@
     </footer>
 
      <!---------------- Script JS  ---------------------->
+     
      <script>
-        function calcularSomatorio() {
-            let valor1 = Number(document.getElementById('idValor1').value);
-            let valor2 = Number(document.getElementById('idValor2').value);
+        function calcularMedia() {
+            // Obter os valores das notas
+            var nota1 = parseFloat(document.getElementById("idNota1").value);
+            var nota2 = parseFloat(document.getElementById("idNota2").value);
 
-                let somatorio = valor1 + valor2;
-                document.getElementById('idSaida').value = `A soma entre ${valor1} e ${valor2} é igual a ${somatorio}.`;
-           
+            // Calcular a média
+            var media = (nota1 + nota2) / 2;
+
+            // Exibir a média na saída
+            document.getElementById("idSaida").innerText = "A média entre " + nota1 + " e " + nota2 + " é igual a " + media;
         }
     </script>
 </body>

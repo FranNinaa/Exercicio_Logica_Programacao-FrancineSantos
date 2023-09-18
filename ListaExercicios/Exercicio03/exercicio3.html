@@ -18,23 +18,25 @@
     </header>
     <!---------------- Sessao Principal ---------------------->
     <main>
-        <form action="" method="post">
+        <form action="" mathod="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 5 </legend>
+                <legend class="borda">Exercicio 3 </legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label>Faça um programa que leia um número inteiro
-                     e mostre seu antecessor e seu sucessor.</label>
+                <label>Desenvolva um algoritmo que leia dois números 
+                    inteiros e mostre o somatório entre eles.</label>
                 <br>
                 <label for="nome">Digite um valor inteiro</label><br>
-                <input type="number" id="idNumero"  value="">
+                <input type="number" id="idValor1" nome="valor1" value="">
                 <br>
-
+                <label>Digite um valor inteiro</label><br>
+                <input type="number" id="idValor2" nome="valor2" value="">
+                <br><br>
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="antecessorSucessor()">
+                    <input type="button" value="Enviar" onclick="calcularSomatorio()">
                 </section>
-                <br><br>
+                <br>
                 <div>
                     <label for="idSaida">Saida</label>
                     <output type="text" id="idSaida" name="nmSaida"></output>
@@ -51,17 +53,13 @@
 
      <!---------------- Script JS  ---------------------->
      <script>
-        function antecessorSucessor() {
-            // Obter o valor do número
-            var numero = parseInt(document.getElementById("idNumero").value);
+        function calcularSomatorio() {
+            let valor1 = Number(document.getElementById('idValor1').value);
+            let valor2 = Number(document.getElementById('idValor2').value);
 
-            // Calcular antecessor e sucessor
-            var antecessor = numero - 1;
-            var sucessor = numero + 1;
-
-            // Exibir o resultado na saída
-            document.getElementById("idSaida").innerText = "O antecessor de " + numero + " é " + antecessor +
-                "\nO sucessor de " + numero + " é " + sucessor;
+                let somatorio = valor1 + valor2;
+                document.getElementById('idSaida').value = `A soma entre ${valor1} e ${valor2} é igual a ${somatorio}.`;
+           
         }
     </script>
 </body>

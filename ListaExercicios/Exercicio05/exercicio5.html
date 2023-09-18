@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="../../style/style.css">
     <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
     <!---------------- Area de Cabeçalho ---------------------->
     <header>
@@ -18,19 +20,19 @@
     <main>
         <form action="" method="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 7 </legend>
+                <legend class="borda">Exercicio 5 </legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label>Desenvolva um programa que leia uma distância em metrôs 
-                    e mostre os valores relativos a outras medidas.</label>
+                <label>Faça um programa que leia um número inteiro
+                     e mostre seu antecessor e seu sucessor.</label>
                 <br>
-                <label for="nome"> Digite uma distância em metros:</label><br>
-                <input type="number" step="0.01" id="idValorMetros"  value="">
+                <label for="nome">Digite um valor inteiro</label><br>
+                <input type="number" id="idNumero" nome="valorInteiro" value="">
                 <br>
 
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="calcularValorRelativo()">
+                    <input type="button" value="Enviar" onclick="antecessorSucessor()">
                 </section>
                 <br><br>
                 <div>
@@ -49,26 +51,17 @@
 
      <!---------------- Script JS  ---------------------->
      <script>
-        function calcularValorRelativo() {
-            // Obter o valor da distância em metros
-            var metros = parseFloat(document.getElementById("idValorMetros").value);
+        function antecessorSucessor() {
+            // Obter o valor do número
+            var numero = parseInt(document.getElementById("idNumero").value);
 
-            // Calcular os valores relativos a outras medidas
-            var quilometros = metros / 1000;
-            var hectometros = metros / 100;
-            var decametros = metros / 10;
-            var decimetros = metros * 10;
-            var centimetros = metros * 100;
-            var milimetros = metros * 1000;
+            // Calcular antecessor e sucessor
+            var antecessor = numero - 1;
+            var sucessor = numero + 1;
 
-            // Exibir os resultados na saída
-            document.getElementById("idSaida").innerText = "A distância de " + metros.toFixed(2) + "m corresponde a:" +
-                "\n" + quilometros.toFixed(5) + "Km" +
-                "\n" + hectometros.toFixed(4) + "Hm" +
-                "\n" + decametros.toFixed(3) + "Dam" +
-                "\n" + decimetros.toFixed(1) + "dm" +
-                "\n" + centimetros.toFixed(1) + "cm" +
-                "\n" + milimetros.toFixed(1) + "mm";
+            // Exibir o resultado na saída
+            document.getElementById("idSaida").innerText = "O antecessor de " + numero + " é " + antecessor +
+                "\nO sucessor de " + numero + " é " + sucessor;
         }
     </script>
 </body>
