@@ -18,28 +18,26 @@
     </header>
     <!---------------- Sessao Principal ---------------------->
     <main>
-        <form action="" method="post">
+        <form action="" mathod="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 4 </legend>
+                <legend class="borda">Lista 2 - Exercicio 4</legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label for="exe4">Faça um programa que leia as duas notas de um aluno em uma
-                     matéria e mostre na tela a sua mídia na disciplina..</label>
+                <label for="exe4">Entrar com um número e verificar se o
+                     mesmo está no intervalo entre 30 e 90, inclusive.</label>
                 <br>
-                <label for="nota">Digite a primeira Nota:</label><br>
-                <input type="number" id="idNota1" nome="nota1" value="">
-                <br>
-                <label for="nota">Digite a segunda nota:</label><br>
-                <input type="number" id="idNota2" nome="valor2" value="">
+                <label for="valor">Digite um valor qualquer:</label>
+                <input type="number"  id="idValor" nome="valor" value="">
                 <br><br>
+
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="calcularMedia()">
+                    <input type="button" value="Enviar" onclick="intervalo()">
                 </section>
                 <br>
                 <div>
                     <label for="idSaida">Saida</label>
-                    <output type="text" id="idSaida" name="nmSaida"></output>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
                 </div>
 
                 <br>
@@ -52,20 +50,18 @@
     </footer>
 
      <!---------------- Script JS  ---------------------->
-     
      <script>
-        function calcularMedia() {
-            // Obter os valores das notas
-            var nota1 = parseFloat(document.getElementById("idNota1").value);
-            var nota2 = parseFloat(document.getElementById("idNota2").value);
-
-            // Calcular a média
-            var media = (nota1 + nota2) / 2;
-
-            // Exibir a média na saída
-            document.getElementById("idSaida").innerText = "A média entre " + nota1 + " e " + nota2 + " é igual a " + media;
+        function intervalo() {
+            //valores recebido do usuário
+            var valor = Number(document.getElementById("idValor").value);
+           
+        
+            if (valor >= 30 && valor <= 90) {
+                document.getElementById("idSaida").innerText = "O número digitado é " + valor + " esta no intervalo entre 30 e 90";
+            } else {
+                document.getElementById("idSaida").innerText = "O número digitado é " + valor + " esta fora do intervalo entre 30 e 90";
+            }
         }
     </script>
 </body>
-
 </html>
