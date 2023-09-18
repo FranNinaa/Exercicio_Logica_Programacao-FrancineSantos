@@ -20,21 +20,18 @@
     <main>
         <form action="" mathod="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 2 </legend>
+                <legend class="borda">Exercicio 10</legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label for="nome">Crie um programa que leia o nome e o 
-                    salário de um funcionário, mostrando no final uma mensagem.</label>
+                <label for="nome">Crie um programa que leia o preço de um produto,
+                     calcule e mostre seu PREÇO PROMOCIONAL, com 5% de desconto.</label>
                 <br>
-                <label for="nome">Nome do Funcionario</label>
-                <input type="text" id="idNome"  value="">
-                <br>
-                <label for="nome">Salário</label>
-                <input type="text" id="idSalario"  value="">
+                <label for="nome">Informe ao preço atual do produto:</label>
+                <input type="number" step="0.01" id="idPreco"  value="">
                 <br><br>
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="pegarNome()">
+                    <input type="button" value="Enviar" onclick="calcularPrecoPromocional()">
                 </section>
                 <br>
                 <div>
@@ -53,12 +50,16 @@
 
      <!---------------- Script JS  ---------------------->
      <script>
-        function pegarNome() {
-            let nome = document.getElementById('idNome').value;
-            let salario = document.getElementById('idSalario').value;
+        function calcularPrecoPromocional() {
+            // Obter o preço atual do produto
+            var precoAtual = parseFloat(document.getElementById("idPreco").value);
 
-                const mensagem = `O funcionário ${nome} tem um salário de R$${salario} em Junho.`;
-                document.getElementById('idSaida').value = mensagem;
+            // Calcular o preço promocional com 5% de desconto
+            var desconto = precoAtual * 0.05;
+            var precoPromocional = precoAtual - desconto;
+
+            // Exibir o resultado na saída
+            document.getElementById("idSaida").innerText = "Preço promocional com 5% de desconto: R$ " + precoPromocional.toFixed(2);
         }
     </script>
 </body>

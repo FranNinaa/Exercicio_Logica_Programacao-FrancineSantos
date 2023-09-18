@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <legend class="borda">Exercicio 7 </legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label>Desenvolva um programa que leia uma distância em metrôs 
+                    e mostre os valores relativos a outras medidas.</label>
+                <br>
+                <label for="nome"> Digite uma distância em metros:</label><br>
+                <input type="number" step="0.01" id="idValorMetros"  value="">
+                <br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="calcularValorRelativo()">
+                </section>
+                <br><br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calcularValorRelativo() {
+            // Obter o valor da distância em metros
+            var metros = parseFloat(document.getElementById("idValorMetros").value);
+
+            // Calcular os valores relativos a outras medidas
+            var quilometros = metros / 1000;
+            var hectometros = metros / 100;
+            var decametros = metros / 10;
+            var decimetros = metros * 10;
+            var centimetros = metros * 100;
+            var milimetros = metros * 1000;
+
+            // Exibir os resultados na saída
+            document.getElementById("idSaida").innerText = "A distância de " + metros.toFixed(2) + "m corresponde a:" +
+                "\n" + quilometros.toFixed(5) + "Km" +
+                "\n" + hectometros.toFixed(4) + "Hm" +
+                "\n" + decametros.toFixed(3) + "Dam" +
+                "\n" + decimetros.toFixed(1) + "dm" +
+                "\n" + centimetros.toFixed(1) + "cm" +
+                "\n" + milimetros.toFixed(1) + "mm";
+        }
+    </script>
+</body>
+
+</html>

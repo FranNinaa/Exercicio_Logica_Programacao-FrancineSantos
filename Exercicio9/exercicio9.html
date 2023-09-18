@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="icon" href="../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Exercicio 9</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="nome">Faça um algoritmo que leia a largura e altura de uma parede, calcule e mostre a área a ser pintada e a quantidade de tinta necessária para o serviço,
+                    sabendo que cada litro de tinta pinta uma área de 2 metros quadrados.</label>
+                <br>
+                <label for="nome">Informe a Largura da parede a ser pintada:</label>
+                <input type="number" step="0.01" id="idLargura"  value="">
+                <br><br>
+                <label for="nome">Informe a Altura da parede a ser pintada:</label>
+                <input type="number" step="0.01" id="idAltura"  value="">
+                <br><br>
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="calcularAreaTinta()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calcularAreaTinta() {
+            // Obter a largura e altura da parede
+            var largura = parseFloat(document.getElementById("idLargura").value);
+            var altura = parseFloat(document.getElementById("idAltura").value);
+
+            // Calcular a área a ser pintada (em metros quadrados)
+            var areaPintada = largura * altura;
+
+            // Calcular a quantidade de tinta necessária (em litros)
+            var quantidadeTinta = areaPintada / 2;  // Cada litro de tinta pinta 2 metros quadrados
+
+            // Exibir o resultado na saída
+            document.getElementById("idSaida").innerText = "Área a ser pintada: " + areaPintada.toFixed(2) + " metros quadrados\n" +
+                "Quantidade de tinta necessária: " + quantidadeTinta.toFixed(2) + " litros";
+        }
+    </script>
+</body>
+</html>
