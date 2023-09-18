@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 2 - Exercicio 3</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="maior">Elabore um algoritmo para Entrar com um número e imprimir uma das
+                     mensagens: maior do que 20, igual a 20 ou menor do que 20.</label>
+                <br>
+                <label for="valor">Digite o primeiro valor:</label>
+                <input type="number"  id="idValor" nome="valor" value="">
+                <br><br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="maiorNumero()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function maiorNumero() {
+            //valores recebido do usuário
+            var valor = Number(document.getElementById("idValor").value);
+           
+        
+            if (valor == 20) {
+                document.getElementById("idSaida").innerText = "O numero digitado é iqual a 20";
+            } else if (valor > 20 ){
+                document.getElementById("idSaida").innerText = "O numero digitado é maior que 20";
+            } else {
+                document.getElementById("idSaida").innerText = "O numero digitado é menor que 20";
+            }
+        }
+    </script>
+</body>
+</html>
