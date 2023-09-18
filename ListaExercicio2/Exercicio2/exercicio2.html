@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 2 - Exercicio 2</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="maior">Elabore um algoritmo que permita a entrada de três 
+                          números e imprima o maior deles.</label>
+                <br>
+                <label for="valor1">Digite o primeiro valor:</label>
+                <input type="number"  id="idNum1" nome="numero1" value="">
+                <br><br>
+                <label for="valor2">Digite o segundo valor:</label>
+                <input type="number"  id="idNum2" nome="numero2" value="">
+                <br><br>
+                <label for="valor3">Digite o terceiro valor:</label>
+                <input type="number"  id="idNum3" nome="numero3" value="">
+                <br><br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="maiorNumero()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function maiorNumero() {
+            //valores recebido do usuário
+            var numero1 = parseFloat(document.getElementById("idNum1").value);
+            var numero2 = parseFloat(document.getElementById("idNum2").value);
+            var numero3 = parseFloat(document.getElementById("idNum3").value);
+        
+            if (numero1 === numero2 && numero2 === numero3) {
+                document.getElementById("idSaida").innerText = "Todos os números digitados são iguais á " + numero1;
+            } else if (numero1 > numero2 && numero1 > numero3) {
+                document.getElementById("idSaida").innerText = "O número " + numero1 + " é o maior dos três números informados.";
+            } else if (numero2 > numero1 && numero2 > numero3) {
+                document.getElementById("idSaida").innerText = "O número " + numero2 + " é o maior dos três números informados.";
+            } else {
+                document.getElementById("idSaida").innerText = "O número " + numero3 + " é o maior dos três números informados.";
+            }
+        }
+    </script>
+</body>
+</html>
