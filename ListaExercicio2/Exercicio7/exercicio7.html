@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 2 - Exercicio 6</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe7">Entrar com o salário de uma pessoa e imprimir o Salário Líquido, segundo a tabela a seguir:
+                    <br><br>
+                    Menor ou igual a R$600,00  -> Isento  
+                    <br>
+                    Maior que R$600,00 e menor ou igual a R$1200,00  -> 25%  
+                    <br>
+                    Maior que R$1200,00 e menor ou igual a R$2000,00 -> 30% 
+                    <br>
+                    Maior que R$2000,00 -> 35% 
+                    <br><br>
+                     O salário líquido é igual ao Salário Bruto menos o desconto de INSS. 
+                    <br>
+                </label>
+                <br>
+                <label for="salario">Digite seu salário:</label>
+                <input type="number"  id="idSalario" nome="salario" value="">
+                <br><br>
+                
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Calcular" onclick="calculoSalario()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calculoSalario() {
+            var salarioBruto = parseFloat(document.getElementById("idSalario").value);
+            var desconto;
+            var salarioLiquido;
+        
+            if (salarioBruto <= 600) {
+                desconto = 0;
+            } else if (salarioBruto <= 1200) {
+                desconto = 0.25;
+            } else if (salarioBruto <= 2000) {
+                desconto = 0.30;
+            } else {
+                desconto = 0.35;
+            }
+        
+            // Calcular o desconto e o salário líquido
+            var valorDesconto = salarioBruto * desconto;
+           var salarioLiquido = salarioBruto - valorDesconto;
+        
+            // Exibir o resultado
+            document.getElementById("idSaida").innerText = "Salário Líquido: R$ " + salarioLiquido.toFixed(2) + " (Desconto de " + (desconto * 100) + "%)";
+        }
+    </script>
+</body>
+</html>
