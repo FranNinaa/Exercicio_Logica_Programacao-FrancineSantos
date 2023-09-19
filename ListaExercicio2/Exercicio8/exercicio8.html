@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 2 - Exercicio 8</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe8">Um comerciante comprou um produto e quer vende-lo com um 
+                                lucro de 50% se o valor da compra for menor que R$ 20,00.
+                            Caso contrário, o lucro será de 35%. Entrar com o valor do produto e imprimir o valor de venda.</label>
+                <br>
+                <label for="salario">Digite o valor do Produto:</label>
+                <input type="number"  id="idProduto" nome="salario" value="">
+                <br><br>
+                
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Calcular" onclick="calculoLucro()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calculoLucro() {
+            var valorProduto = parseFloat(document.getElementById("idProduto").value);
+            var lucro;
+            var valorVenda;
+            var valorLucro;
+           
+        
+            if (valorProduto <= 20) {
+                lucro = 0.50;
+            } else {
+                lucro = 0.35;
+            }
+        
+            // Calcular o desconto e o salário líquido
+            var valorLucro = valorProduto * lucro;
+           var valorVenda = valorProduto + valorLucro;
+        
+            // Exibir o resultado
+            document.getElementById("idSaida").innerText = "Valor para venda: R$ " + valorVenda.toFixed(2) + " (Lucro de " + (lucro * 100) + "%)";
+        }
+    </script>
+</body>
+</html>
