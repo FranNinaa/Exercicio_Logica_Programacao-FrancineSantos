@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 2 - Exercicio 10</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe10">Crie um programa para autenticação de usuários.<br>
+                    Salve 3 usuários em variáveis pré-inicializadas<br>
+                    userId e senha<br>
+                    Aluno1	Trocar123<br>
+                    Aluno2	Senha@123<br>
+                    Aluno3	123Trocar<br><br>
+                    Regras<br>
+                    <br>
+                    Se o usuário informar o userId e senha corretamente o sistema deverá exibir a mensagem:
+                    "Acesso Permitido"
+                    <br>
+                    Se o userId não estiver correto, exibir:
+                    "Usuário não cadastrado"
+                    <br>
+                    Se o usuário estiver correto, mas a senha estiver errada, exibir:
+                    "Senha incorreta"</label>
+                <br>
+                <label for="usuario">Usuário:</label>
+                <input type="text"  id="idUsuario" nome="usuario" value="">
+                <br><br>
+                <label for="senha">Senha:</label>
+                <input type="text"  id="idSenha" nome="senha" value="">
+                <br><br>
+                
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Acessar" onclick="autenticacao()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function autenticacao(){
+              // usuario
+              var userId = document.getElementById("idUsuario").value;
+              // senha
+              var senha = document.getElementById("idSenha").value;
+            
+              var usuarios = {
+                "Aluno1": "Aluno1",
+                "Aluno2": "Senha@123",
+                "Aluno3": "123Trocar"
+            };
+        
+            var mensagem = "Usuário não cadastrado";
+        
+            if (usuarios[userId] === senha) {
+                mensagem = "Acesso Permitido";
+            } else if (usuarios.hasOwnProperty(userId)) {
+                mensagem = "Senha incorreta";
+            }
+        
+            document.getElementById("idSaida").innerText = mensagem;
+            
+        }
+    </script>
+</body>
+</html>
