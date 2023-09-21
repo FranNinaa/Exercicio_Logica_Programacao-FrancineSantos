@@ -27,13 +27,13 @@
                      e imprimi-los em ordem decrescente (suponha números diferentes).</label>
                 <br>
                 <label for="decrescente">Digite o primeiro valor:</label>
-                <input type="number"  id="idValor" nome="valor1" value="">
+                <input type="number"  id="idValor1" nome="valor1" >
                 <br><br>
                 <label for="decrescente">Digite o segundo valor:</label>
-                <input type="number"  id="idValor" nome="valor2" value="">
+                <input type="number"  id="idValor2" nome="valor2">
                 <br><br>
                 <label for="decrescente">Digite o terceiro valor:</label>
-                <input type="number"  id="idValor" nome="valor3" value="">
+                <input type="number"  id="idValor3" nome="valor3" >
                 <br><br>
 
                 <!--------botões  do Formulario ------->
@@ -58,13 +58,29 @@
      <!---------------- Script JS  ---------------------->
      <script>
         function decrescente() {
-            //valores recebido do usuário
-            var valor = Number(document.getElementById("idValor1").value);
-            var valor = Number(document.getElementById("idValor2").value);
-            var valor = Number(document.getElementById("idValor3").value);
-           
-        
-           
+            //valores informados pelo usuario
+            var valor1 = Number(document.getElementById("idValor1").value);
+            var valor2 = Number(document.getElementById("idValor2").value);
+            var valor3 = Number(document.getElementById("idValor3").value);
+
+            var maior, meio, menor;
+
+            // Encontrar o maior valor
+            if (valor1 >= valor2 && valor1 >= valor3) {
+                maior = valor1;
+                meio = Math.max(valor2, valor3);
+                menor = Math.min(valor2, valor3);
+            } else if (valor2 >= valor1 && valor2 >= valor3) {
+                maior = valor2;
+                meio = Math.max(valor1, valor3);
+                menor = Math.min(valor1, valor3);
+            } else {
+                maior = valor3;
+                meio = Math.max(valor1, valor2);
+                menor = Math.min(valor1, valor2);
+            }
+
+            document.getElementById("idSaida").innerText = "Números em ordem decrescente: " + maior + ", " + meio + ", " + menor;
         }
     </script>
 </body>
