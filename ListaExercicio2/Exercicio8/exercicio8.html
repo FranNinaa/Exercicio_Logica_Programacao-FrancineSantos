@@ -60,13 +60,13 @@
             var valorLucro;
            
         
-            if (valorProduto <= 20) {
+            if (valorProduto < 20) {
                 lucro = 0.50;
             } else {
                 lucro = 0.35;
             }
         
-            // Calcular o desconto e o salário líquido
+            // Calcular o desconto 
             var valorLucro = valorProduto * lucro;
            var valorVenda = valorProduto + valorLucro;
         
