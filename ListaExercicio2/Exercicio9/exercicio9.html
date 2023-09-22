@@ -12,52 +12,91 @@
 </head>
 
 <body>
-    <!---------------- Area de Cabeçalho ---------------------->
+    <!-- Area de Cabeçalho -->
     <header>
-        <h1></h1>
     </header>
-    <!---------------- Sessao Principal ---------------------->
+
+    <!-- Sessao Principal -->
     <main>
-        <form action="" mathod="post">
+
+        <!-- campos do Formulario -->
+        <form>
             <fieldset class="borda">
                 <legend class="borda">Lista 2 - Exercicio 9</legend>
                 <br>
-                <!--------campos do Formulario ------->
-                <label for="exe9">Crie um programa para calcular a área das formas geométricas básicas:<br>
-                    a. Círculo (pedir o raio);<br>
-                    b. Retângulo (pedir a base e altura);<br>
-                    c. Triangulo retângulo (pedir a base e altura);<br>
-                    d. Triangulo Equilátero: pedir o lado.<br>
-                    <br>
-                    O usuário deve poder escolher a forma geométrica que deseja calcular a partir de um menu.</label>
-                <br>
-                <label for="salario">Digite o valor do Produto:</label>
-                <input type="number"  id="idProduto" nome="salario" value="">
-                <br><br>
-                
 
-                <!--------botões  do Formulario ------->
+                <select id="formaGeometrica" onchange="mostrarInput()">
+                    <option value="circulo">Círculo</option>
+                    <option value="retangulo">Retângulo</option>
+                    <option value="triangulo">Triângulo Retângulo</option>
+                    <option value="equilatero">Triângulo Equilátero</option>
+                </select>
+
+                <!-- Div para mostrar os campos correspondentes à forma escolhida -->
+                <div id="camposForma"></div>
+
+                <!-- Botão de Calcular -->
                 <section class="buttonContato">
-                    <input type="button" value="Calcular" onclick="calculoLucro()">
+                    <input type="button" value="Calcular" onclick="calcularArea()">
                 </section>
-                <br>
+                <!-- Resultado -->
                 <div>
-                    <label for="idSaida">Saida</label>
-                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                    <label for="idSaida">Resultado</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
                 </div>
-
                 <br>
             </fieldset>
         </form>
     </main>
-    <!---------------- Sessão de Rodapé  ---------------------->
-    <footer>
-        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
-    </footer>
 
-     <!---------------- Script JS  ---------------------->
-     <script>
-       
+    <!-- Script JS -->
+    <script>
+        // Função para criar os campos correspondentes à forma escolhida
+        function mostrarInput() {
+            var formaSelecionada = document.getElementById('formaGeometrica').value;
+            var camposForma = document.getElementById('camposForma');
+            camposForma.innerHTML = '';
+
+            if (formaSelecionada == 'circulo') {
+                camposForma.innerHTML = '<label>Raio: </label><input type="number" id="raio" placeholder="Digite o raio">';
+            } else if (formaSelecionada == 'retangulo') {
+                camposForma.innerHTML = '<label>Base: </label><input type="number" id="base" placeholder="Digite a base"><br>' +
+                    '<label>Altura: </label><input type="number" id="altura" placeholder="Digite a altura">';
+            } else if (formaSelecionada == 'triangulo') {
+                camposForma.innerHTML = '<label>Base: </label><input type="number" id="base" placeholder="Digite a base"><br>' +
+                    '<label>Altura: </label><input type="number" id="altura" placeholder="Digite a altura">';
+            } else if (formaSelecionada == 'equilatero') {
+                camposForma.innerHTML = '<label>Lado: </label><input type="number" id="lado" placeholder="Digite o lado">';
+            }
+        }
+
+        function calcularArea() {
+            var formaSelecionada = document.getElementById('formaGeometrica').value;
+            var area;
+
+            if (formaSelecionada === 'circulo') {
+                var raio = parseFloat(document.getElementById('raio').value);
+                area = Math.PI * raio * raio;
+            } else if (formaSelecionada == 'retangulo') {
+                var base = parseFloat(document.getElementById('base').value);
+                var altura = parseFloat(document.getElementById('altura').value);
+                area = base * altura;
+            } else if (formaSelecionada == 'triangulo') {
+                var base = parseFloat(document.getElementById('base').value);
+                var altura = parseFloat(document.getElementById('altura').value);
+                area = (base * altura) / 2;
+            } else if (formaSelecionada == 'equilatero') {
+                var lado = parseFloat(document.getElementById('lado').value);
+                area = (Math.sqrt(3) / 4) * lado * lado;
+            }
+
+            var resultado = document.getElementById('idSaida');
+            resultado.value = `A área da forma selecionada é: ${area.toFixed(2)}`;
+        }
+
+        // Chamar a função mostrarInput quando a forma for selecionada
+        document.getElementById('formaGeometrica').addEventListener('mudar', mostrarInput);
+        mostrarInput();
     </script>
 </body>
 </html>
