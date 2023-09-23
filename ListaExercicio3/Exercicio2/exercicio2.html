@@ -1,1 +1,77 @@
-  <!---------------- Em construcao ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 3 - Exercicio 2</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe2"> Faça um programa que leia o ano de nascimento de uma pessoa, 
+                  calcule a idade dela e depois mostre se ela pode ou não votar.</label>
+                <br>
+                <label for="idadeVotar">Digite seu ano de nascimento:</label>
+                <input type="number" id="idNascimento" nome="nascimento">
+                <br><br>
+                <label for="idadeVotar">Digite o ano atual:</label>
+                <input type="number" id="idAtual" nome="anoAtual">
+                <br><br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="IdadeVotacao()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function IdadeVotacao() {
+          var anoNascimento = Number(document.getElementById("idNascimento").value)
+          var anoAtual = Number(document.getElementById("idAtual").value)
+          let out = document.getElementById("idSaida")
+          var idade;
+          var podeVotar
+          
+          //calcular idade 
+          idade = anoAtual - anoNascimento;
+          
+         
+          if(idade >= 18){
+            
+            out.innerText = "Sua idade atual é " + idade + " anos pode esta votando esse ano !"; 
+          }else{
+            out.innerText = "Sua idade atual é " + idade + " anos não pode esta votando esse ano !"; 
+        }
+     }  
+    </script>
+</body>
+</html>

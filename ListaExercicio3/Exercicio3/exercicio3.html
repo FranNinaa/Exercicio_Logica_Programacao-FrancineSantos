@@ -1,1 +1,82 @@
-  <!---------------- Em construcao ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 3 - Exercicio 3</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe3"> Crie um algoritmo que leia o nome e as duas notas de um aluno,
+                   calcule a sua média e mostre na tela. No final, 
+                  analise a média e mostre se o aluno teve ou não um bom aproveitamento 
+                  (se ficou acima da média 7.0).</label>
+                <br>
+                <label for="nomeAluno">Digite o nome do aluno:</label>
+                <input type="text" id="idNome" nome="nmNome">
+                <br><br>
+                <label for="nota1">Digite a primeira nota do aluno:</label>
+                <input type="number" id="idNota1" nome="nota1">
+                <br><br>
+                <label for="nota2">Digite a segunda do aluno:</label>
+                <input type="number" id="idNota2" nome="nota2">
+                <br><br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="calculaMedia()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calculaMedia() {
+          var nome = String(document.getElementById("idNome").value);
+          var primeiraNota = parseFloat(document.getElementById("idNota1").value)
+          var segundaNota = parseFloat(document.getElementById("idNota2").value)
+          let out = document.getElementById("idSaida")
+          var media;
+          
+          
+          //calcular idade 
+          media = (primeiraNota + segundaNota) / 2;
+          
+         
+          if(media >= 7){
+            out.innerText = "Aluno " + nome + " sua nota é " + media + " parabéns pela nota, continue assim !"; 
+          }else{
+            out.innerText = "Aluno " + nome + " sua nota é " + media + " esta abaixo da média, estude mais !"; 
+        }
+     }  
+    </script>
+</body>
+</html>

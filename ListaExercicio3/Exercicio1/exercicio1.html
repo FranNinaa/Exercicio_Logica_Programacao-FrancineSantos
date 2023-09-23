@@ -1,1 +1,77 @@
-  <!---------------- Em construcao ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 3 - Exercicio 1</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe1"> Escreva um programa que pergunte a velocidade de um carro. 
+                  Caso ultrapasse 80Km/h, exiba uma mensagem dizendo que o usuário foi multado. 
+                  Nesse caso, exiba o valor da multa, 
+                  cobrando R$5 por cada Km/h acima da velocidade permitida</label>
+                <br>
+                <label for="velocidadeCarro">Digite a velocidade do carro:</label>
+                <input type="number" step="0.01" id="idVelocidade" nome="velocidade" value="carroVelocidade">
+                <br><br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="maiorNumero()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function maiorNumero() {
+            // Obter a velocidade do carro
+            var velocidade = Number(document.getElementById("idVelocidade").value);
+           
+             
+
+           if(velocidade > 80){ 
+            var excessoVelocidade = velocidade - 80;
+            var multa = excessoVelocidade * 5;
+            document.getElementById("idSaida").innerText = `Você foi multado em R$${multa.toFixed(2)} por exceder a velocidade em ${excessoVelocidade} Km/h.`;
+
+           }
+           else{
+            document.getElementById("idSaida").innerText = "Você está dentro do limite de velocidade.";
+
+           }
+
+
+        }
+    </script>
+</body>
+</html>
