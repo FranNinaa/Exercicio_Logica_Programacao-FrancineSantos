@@ -1,1 +1,84 @@
-  <!---------------- Em construcao ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1></h1>
+    </header>
+
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 3 - Exercicio 10</legend>
+                <br>
+                <label for="exe10"> O Índice de Massa Corpórea (IMC) é um valor calculado baseado na altura e no peso de uma pessoa.
+                    De acordo com o valor do IMC, podemos classificar o indivíduo dentro de certas faixas.<br>
+                    <br>abaixo de 18.5: Abaixo do peso
+                    <br>entre 18.5 e 24.9: Peso ideal
+                    <br>entre 25 e 29.9: Sobrepeso
+                    <br>entre 30 e 39.9: Obesidade
+                    <br>40 ou mais: Obesidade mórbida
+                    <br>
+                    <br>Obs: O IMC é calculado pela expressão peso/altura² (peso dividido pelo quadrado da altura)
+                    <br>
+                    <br>Crie um programa que receba o peso e a altura de uma pessoa e informe na tela em que faixa de IMC ela se encontra.
+                </label>
+                <br>
+
+                <label for="peso">Digite seu peso atual:</label>
+                <input type="number" id="idPeso" name="valorPeso">
+                <br>
+
+                <label for="altura">Digite sua altura atual:</label>
+                <input type="number" id="idAltura" name="valorAltura">
+                <br><br>
+
+                <section class="buttonContato">
+                    <input type="button" value="Calcular" onclick="calcularIMC()">
+                </section>
+                <br>
+
+                <div>
+                    <label for="idSaida">Saída</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <script>
+        function calcularIMC() {
+            var peso = Number(document.getElementById("idPeso").value);
+            var altura = Number(document.getElementById("idAltura").value);
+            var IMC = peso / (altura * altura);
+
+            if (IMC < 18.5) {
+                document.getElementById("idSaida").innerText = "Seu IMC é de " + IMC.toFixed(2) + ". Você está abaixo do peso ideal.";
+            } else if (IMC >= 18.5 && IMC <= 24.9) {
+                document.getElementById("idSaida").innerText = "Seu IMC é de " + IMC.toFixed(2) + ". Você está no peso ideal.";
+            } else if (IMC >= 25 && IMC <= 29.9) {
+                document.getElementById("idSaida").innerText = "Seu IMC é de " + IMC.toFixed(2) + ". Você está com sobrepeso.";
+            } else if (IMC >= 30 && IMC <= 39.9) {
+                document.getElementById("idSaida").innerText = "Seu IMC é de " + IMC.toFixed(2) + ". Você está com obesidade.";
+            } else {
+                document.getElementById("idSaida").innerText = "Seu IMC é de " + IMC.toFixed(2) + ". Você está com obesidade mórbida.";
+            }
+        }
+    </script>
+</body>
+
+</html>
