@@ -1,1 +1,82 @@
-  <!---------------- Em construcao ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 3 - Exercicio 6</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe6"> Escreva um programa que leia o ano 
+                  de nascimento de um rapaz e mostre a sua situação em 
+                  relação ao alistamento militar.<br>
+                  <br>
+                  Se estiver antes dos 18 anos, mostre em quantos anos faltam para o alistamento.
+                  <br>Se já tiver depois dos 18 anos, mostre quantos anos já se passaram do alistamento..</label>
+                <br>
+                <label for="idadeAlistamento">Digite o ano de seu nascimento:</label>
+                <input type="number" id="idNascimento" nome="idadeAlistamento" value="">
+                <br>
+                <label for="idadeVotar">Digite o ano atual:</label>
+                <input type="number" id="idAtual" nome="anoAtual">
+                <br><br>
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Calcular" onclick="calculoIdadeAlistamento()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calculoIdadeAlistamento() {
+          var anoNascimento = Number(document.getElementById("idNascimento").value)
+          var anoAtual = Number(document.getElementById("idAtual").value)
+          let out = document.getElementById("idSaida")
+          var idade;
+          var alistamento;
+          
+          //calcular idade 
+          idade = anoAtual - anoNascimento;
+          
+         
+          if(idade < 18){
+            alistamento = idade - 18
+            out.innerText = "Sua idade atual é " + idade + " falta " + alistamento + " anos para o alistamento"; 
+          }else if(idade >= 18){
+            alistamento = idade - 18
+            out.innerText = "Sua idade atual é " + idade + " ja se passou " + alistamento + " anos do alistamento"; 
+        }
+
+      }
+    </script>
+</body>
+</html>
