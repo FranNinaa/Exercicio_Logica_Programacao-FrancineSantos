@@ -1,1 +1,78 @@
-  <!---------------- Em construcao ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1></h1>
+    </header>
+
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 3 - Exercicio 9</legend>
+                <br>
+                <label for="exe9"> Crie um programa que leia o tamanho de três segmentos de reta.
+                    Analise seus comprimentos e diga se é possível formar um triângulo com essas retas.
+                    Matematicamente, para três segmentos formarem um triângulo, 
+                    o comprimento de cada lado deve
+                    ser menor que a soma dos outros dois.</label>
+                <br>
+
+                <label for="lado1" >Digite o comprimento do primeiro lado:</label>
+                <input type="number" id="idLado1" name="lado1">
+                <br>
+
+                <label for="lado2">Digite o comprimento do segundo lado:</label>
+                <input type="number" id="idLado2" name="lado2">
+                <br>
+
+                <label for="lado3">Digite o comprimento do terceiro lado:</label>
+                <input type="number" id="idLado3" name="lado3">
+                <br><br>
+
+                <section class="buttonContato">
+                    <input type="button" value="Verificar" onclick="verificarTriangulo()">
+                </section>
+                <br>
+
+                <div>
+                    <label for="idSaida">Saída</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <script>
+        function verificarTriangulo() {
+            var lado1 = parseFloat(document.getElementById("idLado1").value);
+            var lado2 = parseFloat(document.getElementById("idLado2").value);
+            var lado3 = parseFloat(document.getElementById("idLado3").value);
+            var resultado;
+
+            if (lado1 + lado2 > lado3 && lado1 + lado3 > lado2 && lado2 + lado3 > lado1) {
+                resultado = "É possível formar um triângulo com esses segmentos de reta.";
+            } else {
+                resultado = "Não é possível formar um triângulo com esses segmentos de reta.";
+            }
+
+            document.getElementById("idSaida").innerText = resultado;
+        }
+    </script>
+</body>
+
+</html>
