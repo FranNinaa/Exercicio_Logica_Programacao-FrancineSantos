@@ -1,1 +1,74 @@
-  <!---------------- Em construcao ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 3 - Exercicio 4</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe4"> Desenvolva um 
+                    programa que leia um número inteiro e 
+                    mostre se ele é PAR ou ÍMPAR.</label>
+                <br>
+                <label for="parImpar">Digite um número inteiro</label>
+                <input type="number" id="idNumero" nome="nNumero" value="numParImpar">
+                <br><br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="calculoParImpar()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calculoParImpar() {
+            
+            var numero = Number(document.getElementById("idNumero").value);
+           
+             
+
+           if(numero % 2 == 0){ 
+            document.getElementById("idSaida").innerText = "Numero informado é par !!";
+
+           }
+           else{
+            document.getElementById("idSaida").innerText = "Numero informado é ímpar !!";
+
+           }
+
+
+        }
+    </script>
+</body>
+</html>

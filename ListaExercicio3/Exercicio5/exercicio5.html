@@ -1,1 +1,73 @@
-  <!---------------- Em construcao ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 3 - Exercicio 5</legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe5"> Faça um algoritmo que leia um 
+                  determinado ano e mostre se ele é ou não BISSEXTO.</label>
+                <br>
+                <label for="anoBissexto">Digite o ano Desejado:</label>
+                <input type="number" id="idAno" nome="AnoBi" value="bissextoAno">
+                <br><br>
+
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Calcular" onclick="calculoAnoBissexto()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function calculoAnoBissexto() {
+            
+            var ano = Number(document.getElementById("idAno").value);
+           
+             
+          // divisível por 400 ou se for divisível por 4 e não por 100
+           if((ano % 4 == 0) && (ano % 100 != 0) || (ano % 400 == 0)) { 
+            document.getElementById("idSaida").innerText = "O ano " + ano + " é ano Bissexto !!";
+
+           }
+           else{
+            document.getElementById("idSaida").innerText = "O ano " + ano + " não é ano Bissexto !!";
+
+           }
+
+
+        }
+    </script>
+</body>
+</html>
