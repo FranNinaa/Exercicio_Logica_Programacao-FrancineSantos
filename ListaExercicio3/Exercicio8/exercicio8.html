@@ -1,1 +1,67 @@
-  <!---------------- Em construcao ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1></h1>
+    </header>
+
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 3 - Exercicio 8</legend>
+                <br>
+                <label for="exe8"> Faça um algoritmo que pergunte a distância que um passageiro deseja percorrer em Km. 
+                  Calcule o preço da passagem, cobrando R$0.50 por Km para viagens até 200Km e R$0.45 para viagens mais longas.</label>
+                <br>
+
+                <label for="nomeCompleto">Digite a quantidade de KM a ser percorrido:</label>
+                <input type="number" id="idKM" name="passagem">
+                <br>
+
+                <section class="buttonContato">
+                    <input type="button" value="Calcular" onclick="calculoPassagem()">
+                </section>
+                <br>
+
+                <div>
+                    <label for="idSaida">Saída</label>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <script>
+        function calculoPassagem() {
+            var KMpercorrido = Number(document.getElementById("idKM").value);
+            var resultado;
+
+            if (KMpercorrido <= 200) {
+                resultado = KMpercorrido * 0.50; 
+                document.getElementById("idSaida").innerText = "Valor da passagem fica R$" + resultado.toFixed(2) + " para pagamento";
+            } else if (KMpercorrido > 200) {
+                resultado = KMpercorrido * 0.45; 
+                document.getElementById("idSaida").innerText = "Valor da passagem fica R$" + resultado.toFixed(2) + " para pagamento";
+            } else {
+                document.getElementById("idSaida").innerText = "Digite um KM válido.";
+            }
+        }
+    </script>
+</body>
+
+</html>
