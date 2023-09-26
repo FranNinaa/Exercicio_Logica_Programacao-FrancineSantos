@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!---------------- Área de Cabeçalho ---------------------->
+    <header>
+        <h1>Login</h1>
+    </header>
+    <!---------------- Sessão Principal ---------------------->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <legend class="borda">Lista 2 - Exercício 10</legend>
+                <br>
+                <!--------Campos do Formulário ------->
+                <label for="exe10">Crie um programa para autenticação de usuários.<br>
+                    Salve 3 usuários em variáveis pré-inicializadas<br>
+                    userId e senha<br>
+                    Aluno1 Trocar123<br>
+                    Aluno2 Senha@123<br>
+                    Aluno3 123Trocar<br><br>
+                    Regras<br>
+                    <br>
+                    Se o usuário informar o userId e senha corretamente, o sistema deverá exibir a mensagem:
+                    "Acesso Permitido"
+                    <br>
+                    Se o userId não estiver correto, exibir:
+                    "Usuário não cadastrado"
+                    <br>
+                    Se o usuário estiver correto, mas a senha estiver errada, exibir:
+                    "Senha incorreta"
+                    <br>
+                    Fazer acesso seguido de erro da senha até 3x e se errar novamente, 
+                    bloquear a conta mostrando a mensagem "Usuário bloqueado".</label>
+                <br>
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="idUsuario" name="usuario" value="" required>
+                <br><br>
+                <label for="senha">Senha:</label>
+                <input type="password" id="idSenha" name="senha" value="" required>
+                <br><br>
+
+                <!--------Botões do Formulário ------->
+                <section class="buttonContato">
+                    <input type="button" value="Acessar" onclick="autenticacao()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saída</label>
+                    <output id="idSaida"></output>
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Script JS  ---------------------->
+    <script>
+        const USUARIOS = {
+            Aluno1: { senha: 'Trocar123' },
+            Aluno2: { senha: 'Senha@123' },
+            Aluno3: { senha: '123Trocar' }
+        };
+
+        let tentativas = 1;
+
+        function autenticacao() {
+            const usuarioId = document.getElementById('idUsuario').value;
+            const usuarioSenha = document.getElementById('idSenha').value;
+            const saida = document.getElementById('idSaida');
+            const botao = document.querySelector('input[type=button]');
+
+            console.log(`Usuário: ${usuarioId}, Senha: ${usuarioSenha}, Tentativas de login: ${tentativas}`);
+
+
+            if (tentativas < 3) {
+                const usuario = USUARIOS[usuarioId];
+                if (usuario && usuario.senha === usuarioSenha) {
+                    tratarResultado('acesso', saida);
+                } else if (usuario) {
+                    tratarResultado('senha', saida);
+                    tentativas++;
+                } else {
+                    tratarResultado('usuario', saida);
+                    tentativas++;
+                }
+            } else {
+                saida.textContent = 'Acesso Bloqueado.. número de tentativas excedido!!';
+                botao.disabled = true;
+            }
+        }
+
+        function tratarResultado(tipo, elementoSaida) {
+            switch (tipo) {
+                case 'acesso':
+                    elementoSaida.textContent = 'Acesso Permitido';
+                    break;
+                case 'senha':
+                    elementoSaida.textContent = 'Senha incorreta';
+                    break;
+                case 'usuario':
+                    elementoSaida.textContent = 'Usuário não cadastrado';
+                    break;
+                default:
+                    elementoSaida.textContent = 'Erro ao processar o login.';
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>
