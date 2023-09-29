@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercicio For e While</title>
+</head>
+<body>
+
+<button onclick="mostrarContagemFor()">Mostrar Contagem (for)</button>
+<br><br>
+<button onclick="mostrarContagemWhile()">Mostrar Contagem (while)</button>
+
+<script>
+    //Crie um aplicativo que mostre na tela a seguinte contagem: "Inicio 0 4 8 12 16 20 Acabou!" com FOR e While
+
+  function mostrarContagemFor() {
+    console.log("Início 0");
+    for (let i = 4; i <= 20; i += 4) {
+      console.log(i);
+    }
+    console.log("Acabou!");
+  }
+
+  function mostrarContagemWhile() {
+    console.log("Início 0");
+    let i = 4;
+    while (i <= 20) {
+      console.log(i);
+      i += 4;
+    }
+    console.log("Acabou!");
+  }
+</script>
+
+</body>
+</html>

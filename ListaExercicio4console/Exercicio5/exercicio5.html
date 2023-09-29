@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercicio For e While</title>
+</head>
+<body>
+
+<button onclick="mostrarContagemFor()">Mostrar Contagem (for)</button>
+<br><br>
+<button onclick="mostrarContagemWhile()">Mostrar Contagem (While)</button>
+
+<script>
+   //5. Faça um algoritmo que pergunte ao usuário um número inteiro e positivo qualquer e mostre uma contagem até esse valor:  
+  //Ex: Digite um valor: 77  
+  //Contagem: "Inicio 1 2 3 4 5 6 7 ... 75 76 77 Acabou!" 
+  
+  function mostrarContagemFor() {
+    const numero = parseInt(prompt("Digite um valor inteiro e positivo:"));
+    console.log("Início 1");
+    for (let i = 2; i <= numero; i++) {
+      console.log(i);
+    }
+    console.log("Acabou!");
+  }
+
+  function mostrarContagemWhile() {
+    const numero = parseInt(prompt("Digite um valor inteiro e positivo:"));
+    console.log("Início 1");
+    let i = 2;
+    while (i <= numero) {
+      console.log(i);
+      i++;
+    }
+    console.log("Acabou!");
+  }
+</script>
+
+</body>
+</html>
