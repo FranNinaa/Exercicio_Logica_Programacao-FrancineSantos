@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercicio For e While</title>
+</head>
+<body>
+
+<button onclick="calcularSomaFor()">Calcular Soma (for)</button>
+<br><br>
+<button onclick="calcularSomaWhile()">Calcular Soma (while)</button>
+
+<script>
+//7. Crie um programa que calcule e mostre na tela o resultado da soma entre 6 + 8 + 10 + 12 + 14 + ... + 98 + 100.
+
+
+  function calcularSomaFor() {
+    let soma = 0;
+    for (let i = 6; i <= 100; i += 2) {
+      soma += i;
+    }
+    console.log("A soma dos números pares de 6 a 100 é: " + soma);
+  }
+  function calcularSomaWhile() {
+    let soma = 0;
+    let i = 6;
+
+    while (i <= 100) {
+      soma += i;
+      i += 2; // Incrementa de 2 em 2 para considerar apenas os números pares
+    }
+
+    console.log("A soma dos números pares de 6 a 100 é: " + soma);
+  }
+</script>
+
+</body>
+</html>

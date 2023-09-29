@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Impares ou Pares (for)</title>
+</head>
+<body>
+
+<button onclick="imprimirNumerosFor()">Imprimir Números (for)</button>
+<br><br>
+<button onclick="imprimirNumerosWhile()">Imprimir Números (while)</button>
+
+<script>
+    // Crie um programa que leia os valores inicial e final de um intervalo 
+    //e imprima todos os valores impares ou pares contidos no intervalo. 
+    //O usuário deve poder escolher entre impares e pares.  
+
+  function imprimirNumerosFor() {
+    const primeiroValor = parseInt(prompt("Digite o primeiro Valor:"));
+    const ultimoValor = parseInt(prompt("Digite o último Valor:"));
+    const escolha = prompt("Escolha 'p' para pares ou 'i' para ímpares:");
+
+    console.log("Números " + (escolha === 'p' ? 'pares' : 'ímpares') + " no intervalo:");
+
+    for (let i = primeiroValor; i <= ultimoValor; i++) {
+      if ((escolha === 'p' && i % 2 === 0) || (escolha === 'i' && i % 2 !== 0)) {
+        console.log(i);
+      }
+    }
+  }
+
+  function imprimirNumerosWhile() {
+    const primeiroValor = parseInt(prompt("Digite o primeiro Valor:"));
+    const ultimoValor = parseInt(prompt("Digite o último Valor:"));
+    const escolha = prompt("Escolha 'p' para pares ou 'i' para ímpares:");
+
+    console.log("Números " + (escolha === 'p' ? 'pares' : 'ímpares') + " no intervalo:");
+
+    let i = primeiroValor;
+    while (i <= ultimoValor) {
+      if ((escolha === 'p' && i % 2 === 0) || (escolha === 'i' && i % 2 !== 0)) {
+        console.log(i);
+      }
+      i++;
+    }
+  }
+</script>
+
+</body>
+</html>

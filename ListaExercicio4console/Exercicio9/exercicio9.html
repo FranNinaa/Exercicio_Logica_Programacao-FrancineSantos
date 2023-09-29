@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contagem Personalizada (for)</title>
+</head>
+<body>
+
+<button onclick="mostrarContagemFor()">Mostrar Contagem (for)</button>
+<br><br>
+<button onclick="mostrarContagemWhile()">Mostrar Contagem (while)</button>
+
+<script>
+    //O programa anterior (8) vai ter um problema quando digitarmos o primeiro valor maior que o último.
+    // Resolva esse problema com um código que funcione em qualquer situação.
+  function mostrarContagemFor() {
+    const primeiroValor = parseInt(prompt("Digite o primeiro Valor:"));
+    const ultimoValor = parseInt(prompt("Digite o último Valor:"));
+    const incremento = parseInt(prompt("Digite o incremento:"));
+
+    console.log("Contagem:");
+
+    let i;
+    if (primeiroValor <= ultimoValor) {
+      for (i = primeiroValor; i <= ultimoValor; i += incremento) {
+        console.log(i);
+      }
+    } else {
+      for (i = primeiroValor; i >= ultimoValor; i -= incremento) {
+        console.log(i);
+      }
+    }
+    function mostrarContagemWhile() {
+        const primeiroValor = parseInt(prompt("Digite o primeiro Valor:"));
+        const ultimoValor = parseInt(prompt("Digite o último Valor:"));
+        const incremento = parseInt(prompt("Digite o incremento:"));
+    
+        console.log("Contagem:");
+    
+        let i;
+        if (primeiroValor <= ultimoValor) {
+          i = primeiroValor;
+          while (i <= ultimoValor) {
+            console.log(i);
+            i += incremento;
+          }
+        } else {
+          i = primeiroValor;
+          while (i >= ultimoValor) {
+            console.log(i);
+            i -= incremento;
+          }
+        }
+    
+        console.log("Acabou!");
+      }
+    console.log("Acabou!");
+  }
+</script>
+
+</body>
+</html>

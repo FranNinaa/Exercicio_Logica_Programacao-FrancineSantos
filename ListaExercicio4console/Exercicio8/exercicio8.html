@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercicio For e While</title>
+</head>
+<body>
+
+<button onclick="mostrarContagemFor()">Mostrar Contagem (for)</button>
+<br><br>
+<button onclick="mostrarContagemWhile()">Mostrar Contagem (while)</button>
+
+<script>
+//8. Crie um algoritmo que leia o valor inicial da contagem, 
+//o valor final e o incremento, mostrando em seguida todos os valores no intervalo:  
+//Exemplo: 
+//Digite o primeiro Valor: 3 
+//Digite o último Valor: 10  
+//Digite o incremento: 2  
+//Contagem: 3 5 7 9 Acabou!
+
+  function mostrarContagemFor() {
+    const primeiroValor = parseInt(prompt("Digite o primeiro Valor:"));
+    const ultimoValor = parseInt(prompt("Digite o último Valor:"));
+    const incremento = parseInt(prompt("Digite o incremento:"));
+
+    console.log("Contagem:");
+
+    for (let i = primeiroValor; i <= ultimoValor; i += incremento) {
+      console.log(i);
+    }
+    console.log("Acabou!");
+  }
+
+  function mostrarContagemWhile() {
+    const primeiroValor = parseInt(prompt("Digite o primeiro Valor:"));
+    const ultimoValor = parseInt(prompt("Digite o último Valor:"));
+    const incremento = parseInt(prompt("Digite o incremento:"));
+
+    console.log("Contagem:");
+
+    let i = primeiroValor;
+    while (i <= ultimoValor) {
+      console.log(i);
+      i += incremento;
+    }
+    console.log("Acabou!");
+  }
+</script>
+
+</body>
+</html>
