@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!---------------- Area de Cabeçalho ---------------------->
+    <header>
+        <h1></h1>
+    </header>
+    <!---------------- Sessao Principal ---------------------->
+    <main>
+        <form action="" mathod="post">
+            <fieldset class="borda">
+                <legend class="borda">Exercicio 1 </legend>
+                <br>
+                <!--------campos do Formulario ------->
+                <label for="exe1">Faça um programa que leia o nome de uma pessoa e
+                     mostre uma mensagem de boas vindas para ela</label>
+                <br>
+                <label for="nome">Qual é Seu nome?</label>
+                <input type="text" id="idNome" name="nmNome">
+                <br><br>
+                <!--------botões  do Formulario ------->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="pegarNome()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saida</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+    <!---------------- Sessão de Rodapé  ---------------------->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+     <!---------------- Script JS  ---------------------->
+     <script>
+        function pegarNome() {
+            let nome = document.getElementById('idNome').value;
+
+           document.getElementById('idSaida').value = `Olá ${nome}, é um prazer te conhecer!`;
+        }
+    </script>
+</body>
+
+</html>
