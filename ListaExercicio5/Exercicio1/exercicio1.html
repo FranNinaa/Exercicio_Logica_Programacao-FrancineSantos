@@ -2,37 +2,42 @@
 <html lang="en">
 
 <head>
+    <!-- Configuração da página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
     <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
     <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
-    <!---------------- Area de Cabeçalho ---------------------->
+    <!-- Área de Cabeçalho -->
     <header>
         <h1></h1>
     </header>
-    <!---------------- Sessao Principal ---------------------->
+
+    <!-- Sessao Principal -->
     <main>
-        <form action="" mathod="post">
+        <form action="" method="post">
             <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
                 <legend class="borda">Lista 5 - Exercicio 1 </legend>
                 <br>
-                <!--------campos do Formulario ------->
                 <label for="exe1">Crie um algoritmo que mostre na tela todos os números 
                     entre 1 e 100 que sejam múltiplos de 3 ou 5.</label>
                 <br>
                 
-                <!--------botões  do Formulario ------->
+                <!-- Botão para executar a função -->
                 <section class="buttonContato">
                     <input type="button" value="Enviar" onclick="mostrarMultiplos()">
                 </section>
                 <br>
                 <div>
+                    <!-- Saida dos múltiplos -->
                     <label for="idSaida">Saida</label><br>
                     <output type="text" id="idSaida" name="nmSaida"></output> 
                 </div>
@@ -41,19 +46,24 @@
             </fieldset>
         </form>
     </main>
-    <!---------------- Sessão de Rodapé  ---------------------->
+
+    <!-- Sessão de Rodapé -->
     <footer>
         <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
     </footer>
 
-     <!---------------- Script JS  ---------------------->
-     <script>
+    <!-- Script JS -->
+    <script>
+        // Função para mostrar os múltiplos de 3 e 5
         function mostrarMultiplos() {
             var saida = document.getElementById('idSaida');
-            saida.textContent = '';
+            saida.textContent = ''; // Limpa a saída
 
+            // Loop de 1 a 100 para verificar múltiplos de 3 e 5
             for (var i = 1; i <= 100; i++) {
+                // Verifica se é múltiplo de 3 ou 5
                 if (i % 3 === 0 || i % 5 === 0) {
+                    // Adiciona o número múltiplo à saída
                     saida.textContent += i + ' ';
                 }
             }

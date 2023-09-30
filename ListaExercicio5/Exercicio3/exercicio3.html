@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 5 - Exercicio 3 </legend>
+                <br>
+                <label for="exe3">Desenvolva um programa que faça o sorteio de 20 números entre 0 e 10 e mostre na tela: 
+                    <br>
+                    <br>a) Quais foram os números sorteados
+                    <br>b) Quantos números estão acima de 5
+                    <br>c) Quantos números são divisíveis por 3
+                </label>
+                <br>
+                
+                <!-- Botão para executar a função -->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="mostrarSorteio()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saida dos resultados -->
+                    <label for="idSaida">Saida</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        // Função para mostrar os resultados do sorteio
+        function mostrarSorteio() {
+            var saida = document.getElementById('idSaida');
+            saida.textContent = ''; // Limpa a saída
+        
+            var numerosSorteados = [];
+            var acimaDe5Count = 0;
+            var divisiveisPor3Count = 0;
+        
+            var i = 0;
+            while (i < 20) {
+                // Gera um número aleatório entre 0 e 10
+                var numeroSorteado = Math.floor(Math.random() * 11);
+        
+                // Armazena o número sorteado
+                numerosSorteados.push(numeroSorteado);
+        
+                // Conta os números acima de 5
+                if (numeroSorteado > 5) {
+                    acimaDe5Count++;
+                }
+        
+                // Conta os números divisíveis por 3
+                if (numeroSorteado % 3 === 0) {
+                    divisiveisPor3Count++;
+                }
+        
+                i++;
+            }
+        
+            // Mostra os resultados na saída
+            saida.innerHTML += "a) Números sorteados: " + numerosSorteados.join(', ') + "<br>";
+            saida.innerHTML += 'b) Números acima de 5: ' + acimaDe5Count + '<br>';
+            saida.innerHTML += '<br>' + 'c) Números divisíveis por 3: ' + divisiveisPor3Count;
+        }
+    </script>
+</body>
+
+</html>

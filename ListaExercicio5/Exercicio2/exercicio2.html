@@ -2,27 +2,31 @@
 <html lang="en">
 
 <head>
+    <!-- Configuração da página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
     <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
     <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
-    <!---------------- Area de Cabeçalho ---------------------->
+    <!-- Área de Cabeçalho -->
     <header>
         <h1></h1>
     </header>
-    <!---------------- Sessao Principal ---------------------->
+
+    <!-- Sessao Principal -->
     <main>
-        <form action="" mathod="post">
+        <form action="" method="post">
             <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
                 <legend class="borda">Lista 5 - Exercicio 2 </legend>
                 <br>
-                <!--------campos do Formulario ------->
                 <label for="exe2">Crie um programa que leia os valores inicial e final 
                     de um intervalo e imprima todos os números primos contidos no intervalo.
                     <br><br>
@@ -35,12 +39,13 @@
                 </label>
                 <br>
                 
-                <!--------botões  do Formulario ------->
+                <!-- Botão para executar a função -->
                 <section class="buttonContato">
                     <input type="button" value="Enviar" onclick="mostrarNumerosPrimos()">
                 </section>
                 <br>
                 <div>
+                    <!-- Saida dos números primos -->
                     <label for="idSaida">Saida</label><br>
                     <output type="text" id="idSaida" name="nmSaida"></output> 
                 </div>
@@ -49,18 +54,22 @@
             </fieldset>
         </form>
     </main>
-    <!---------------- Sessão de Rodapé  ---------------------->
+
+    <!-- Sessão de Rodapé -->
     <footer>
         <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
     </footer>
 
-     <!---------------- Script JS  ---------------------->
-     <script>
+    <!-- Script JS -->
+    <script>
+        // Função para mostrar os números primos no intervalo
         function mostrarNumerosPrimos() {
+            // Obtenção dos elementos e valores de início e final
             var saida = document.getElementById('idSaida');
             let inicio = parseInt(document.getElementById('idValorInicial').value);
             let final = parseInt(document.getElementById('idValorFinal').value);
             
+            // Verificação se os valores de início e final são válidos
             if (isNaN(inicio) || isNaN(final)) {
                 alert("Por favor, insira valores válidos para o início e fim do intervalo.");
                 return;
@@ -80,9 +89,11 @@
                 return true;
             }
 
+            // Iteração sobre o intervalo e exibição dos números primos
             for (let i = inicio; i <= final; i++) {
                 if (isPrime(i)) {
-                    saida.textContent += i + ' é primo / ';
+                    // Adiciona o número primo à saída
+                    saida.innerHTML += i + ' é primo<br>';
                 }
             }
         }
