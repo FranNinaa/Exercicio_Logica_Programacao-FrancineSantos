@@ -20,18 +20,24 @@
     <main>
         <form action="" mathod="post">
             <fieldset class="borda">
-                <legend class="borda">Exercicio 1 </legend>
+                <legend class="borda">Lista 5 - Exercicio 2 </legend>
                 <br>
                 <!--------campos do Formulario ------->
-                <label for="exe1">Faça um programa que leia o nome de uma pessoa e
-                     mostre uma mensagem de boas vindas para ela</label>
+                <label for="exe2">Crie um programa que leia os valores inicial e final 
+                    de um intervalo e imprima todos os números primos contidos no intervalo.
+                    <br><br>
+                    <label for="nome">Digite um valor inicial..</label>
+                    <input type="number" id="idValorInicial" name="vlInicial">
+                    <br><br>
+                    <label for="nome">Digite um valor final..</label>
+                    <input type="number" id="idValorFinal" name="vlFinal">
+                    <br><br>
+                </label>
                 <br>
-                <label for="nome">Qual é Seu nome?</label>
-                <input type="text" id="idNome" name="nmNome">
-                <br><br>
+                
                 <!--------botões  do Formulario ------->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="pegarNome()">
+                    <input type="button" value="Enviar" onclick="mostrarNumerosPrimos()">
                 </section>
                 <br>
                 <div>
@@ -50,10 +56,35 @@
 
      <!---------------- Script JS  ---------------------->
      <script>
-        function pegarNome() {
-            let nome = document.getElementById('idNome').value;
+        function mostrarNumerosPrimos() {
+            var saida = document.getElementById('idSaida');
+            let inicio = parseInt(document.getElementById('idValorInicial').value);
+            let final = parseInt(document.getElementById('idValorFinal').value);
+            
+            if (isNaN(inicio) || isNaN(final)) {
+                alert("Por favor, insira valores válidos para o início e fim do intervalo.");
+                return;
+            }
 
-           document.getElementById('idSaida').value = `Olá ${nome}, é um prazer te conhecer!`;
+            saida.textContent = ''; // Limpa a saída
+
+            // Função para verificar se um número é primo
+            function isPrime(num) {
+                if (num <= 1) return false;
+                if (num === 2) return true;
+
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) return false;
+                }
+
+                return true;
+            }
+
+            for (let i = inicio; i <= final; i++) {
+                if (isPrime(i)) {
+                    saida.textContent += i + ' é primo / ';
+                }
+            }
         }
     </script>
 </body>
