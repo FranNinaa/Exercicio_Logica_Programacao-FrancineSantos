@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 5 - Exercicio 6</legend>
+                <br>
+                <label for="exe6">Crie um algoritmo que leia a idade de 'n' pessoas, mostrando no final: 
+                    <br> 
+                    <br>a) Qual é a média de idade do grupo  
+                    <br>b) Quantas pessoas tem mais de 18 anos  
+                    <br>c) Quantas pessoas tem menos de 5 anos  
+                    <br>d) Qual foi a maior idade lida  
+                </label>
+                <br>
+                
+                <!-- Campo para inserir o número de pessoas -->
+                <label for="numPessoas">Número de pessoas:</label>
+                <input type="number" id="numPessoas" name="numPessoas" min="1" required><br><br>
+
+                <!-- Botão para executar a função -->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="mostreIdades()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saída dos resultados -->
+                    <label for="idSaida">Saída</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        function mostreIdades() {
+            const numPessoas = parseInt(document.getElementById("numPessoas").value);
+
+            let somaIdades = 0;
+            let pessoasMaisDezoito = 0;
+            let pessoasMenosCinco = 0;
+            let maiorIdade = Number.MIN_VALUE;
+
+            for (let i = 0; i < numPessoas; i++) {
+                const idade = parseInt(prompt(`Digite a idade da pessoa ${i + 1}:`));
+
+                if (!isNaN(idade)) {
+                    somaIdades += idade;
+
+                    if (idade > 18) {
+                        pessoasMaisDezoito++;
+                    }
+
+                    if (idade < 5) {
+                        pessoasMenosCinco++;
+                    }
+
+                    if (idade > maiorIdade) {
+                        maiorIdade = idade;
+                    }
+                } else {
+                    alert("Digite uma idade válida.");
+                    return;
+                }
+            }
+
+            const mediaIdade = somaIdades / numPessoas;
+
+            const resultado = `
+            Média de idade: ${mediaIdade.toFixed(2)} anos <br>
+            Pessoas com mais de 18 anos: ${pessoasMaisDezoito} <br>
+            Pessoas com menos de 5 anos: ${pessoasMenosCinco} <br>
+            Maior idade: ${maiorIdade} anos
+        `;
+        
+        document.getElementById("idSaida").innerHTML = resultado;
+        }
+    </script>
+</body>
+
+</html>
