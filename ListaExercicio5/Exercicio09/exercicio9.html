@@ -25,11 +25,23 @@
         <form action="" method="post">
             <fieldset class="borda">
                 <!-- Título e instruções do exercício -->
-                <legend class="borda">Lista 5 - Exercicio 8</legend>
+                <legend class="borda">Lista 5 - Exercicio 9</legend>
                 <br>
-                <label for="exe8">Ler uma temperatura em graus Celsius e apresentá-la 
-                    convertida em graus Fahrenheit. A fórmula de conversão é: F=(9*C+160)/5, 
-                    sendo F a temperatura em Fahrenheit e C a temperatura em Celsius
+                <label for="exe9"> Crie um novo programa a partir 
+                    do exercício anterior e permita que o usuário 
+                    escolha em que unidade de medida ele deseja 
+                    informar a temperatura (C, F ou K). O programa 
+                    deverá converter deverá converter a temperatura 
+                    para as outras unidades de medida.
+                    <br>
+                    <br>Sendo C= Celsius, F= Fahrenheit e K = Kelvin 
+                    <br>Formulas fornecidas: 
+                    <br>K=C+273
+                    <br>K-273 = C
+                    <br>F=(9*C+160)/5 
+                    <br>((F * 5)-160)/9 = C
+                    <br>((F * 5)-160)/9 + 273 = K
+                    <br>F  = (((K - 273) * 9) + 160)/5
                     <br><br>
                     <!-- Campo para inserir a temperatura em graus Celsius -->
                     <label for="nome">Digite a temperatura em graus Celsius:</label>
@@ -45,7 +57,7 @@
                 <br>
                 <div>
                     <!-- Saída da temperatura em graus Fahrenheit -->
-                    <label for="idSaida">Saída (temperatura em Fahrenheit):</label><br>
+                    <label for="idSaida"></label><br>
                     <output type="text" id="idSaida" name="nmSaida"></output> 
                 </div>
 
@@ -74,8 +86,12 @@
             // Converte a temperatura de Celsius para Fahrenheit usando a fórmula
             const tempFahrenheit = (9 * tempCelsius + 160) / 5;
 
-            // Exibe a temperatura convertida em Fahrenheit na saída
-            document.getElementById("idSaida").textContent = `Temperatura em Fahrenheit: ${tempFahrenheit.toFixed(2)} °F`;
+            // Converte a temperatura de Celsius para Kelvin usando a fórmula
+            const tempKelvin = tempCelsius + 273;
+
+            // Exibe a temperatura convertida em Fahrenheit e Kelvin na saída
+            document.getElementById("idSaida").innerHTML = `Temperatura em Fahrenheit: ${tempFahrenheit.toFixed(2)} °F<br>Temperatura em Kelvin: ${tempKelvin.toFixed(2)} K`;
+
         }
     </script>
 </body>
