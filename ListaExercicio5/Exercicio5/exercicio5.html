@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 5 - Exercicio 5</legend>
+                <br>
+                <label for="exe5">Crie um aplicativo que leia o preço de 'n' produtos. 
+                    No final, mostre na tela qual foi o maior e qual foi o menor preço digitados.
+                </label>
+                <br>
+                
+                <!-- Campo para inserir o número de produtos -->
+                <label for="numProdutos">Número de produtos:</label>
+                <input type="number" id="numProdutos" name="numProdutos" min="1" required><br><br>
+
+                <!-- Botão para executar a função -->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="mostrePreco()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saída dos resultados -->
+                    <label for="idSaida">Saída</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        function mostrePreco() {
+            const numProdutos = parseInt(document.getElementById("numProdutos").value);
+
+            if (numProdutos < 1) {
+                alert("Insira um número válido de produtos.");
+                return;
+            }
+
+            let maiorPreco = Number.MIN_VALUE; // Inicializa com o menor valor possível
+            let menorPreco = Number.MAX_VALUE; // Inicializa com o maior valor possível
+
+            for (let i = 0; i < numProdutos; i++) {
+                const preco = parseFloat(prompt(`Digite o preço do produto ${i + 1}:`));
+
+                if (!isNaN(preco)) {
+                    if (preco > maiorPreco) {
+                        maiorPreco = preco;
+                    }
+
+                    if (preco < menorPreco) {
+                        menorPreco = preco;
+                    }
+                } else {
+                    alert("Digite um preço válido para o produto.");
+                    return;
+                }
+            }
+
+            const resultado = `Maior preço: R$ ${maiorPreco.toFixed(2)}\nMenor preço: R$ ${menorPreco.toFixed(2)}`;
+            document.getElementById("idSaida").textContent = resultado;
+        }
+    </script>
+</body>
+
+</html>
