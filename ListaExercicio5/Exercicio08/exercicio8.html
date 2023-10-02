@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 5 - Exercicio 8</legend>
+                <br>
+                <label for="exe2">Ler uma temperatura em graus Celsius e apresentá-la 
+                    convertida em graus Fahrenheit. A fórmula de conversão é: F=(9*C+160)/5, 
+                    sendo F a temperatura em Fahrenheit e C a temperatura em Celsius
+                    <br><br>
+                    <!-- Campo para inserir a temperatura em graus Celsius -->
+                    <label for="nome">Digite a temperatura em graus Celsius:</label>
+                    <input type="number" id="idGraus" name="tempGraus">
+                    <br><br>
+                </label>
+                <br>
+                
+                <!-- Botão para executar a função -->
+                <section class="buttonContato">
+                    <input type="button" value="Converter" onclick="mostrarGraus()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saída da temperatura em graus Fahrenheit -->
+                    <label for="idSaida">Saída (temperatura em Fahrenheit):</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        function mostrarGraus() {
+            // Obtém a temperatura em graus Celsius do campo de entrada
+            const tempCelsius = parseFloat(document.getElementById("idGraus").value);
+
+            // Verifica se a entrada é um número válido
+            if (isNaN(tempCelsius)) {
+                alert("Por favor, insira uma temperatura válida em graus Celsius.");
+                return;
+            }
+
+            // Converte a temperatura de Celsius para Fahrenheit usando a fórmula
+            const tempFahrenheit = (9 * tempCelsius + 160) / 5;
+
+            // Exibe a temperatura convertida em Fahrenheit na saída
+            document.getElementById("idSaida").textContent = `Temperatura em Fahrenheit: ${tempFahrenheit.toFixed(2)} °F`;
+        }
+    </script>
+</body>
+
+</html>
