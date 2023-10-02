@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1>Casa de Câmbio</h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form>
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Conversor de Moedas</legend>
+                <br>
+                <!-- Campo para inserir o valor em reais -->
+                <label for="valorReal">Digite o valor em Reais:</label>
+                <input type="number" id="valorReal" min="0">
+                <br><br>
+
+                <!-- Botões para seleção da moeda de destino -->
+                <label for="moedaDestino">Escolha a moeda de destino:</label>
+                <select id="moedaDestino">
+                    <option value="dolar">Dólar Americano</option>
+                    <option value="euro">Euro</option>
+                    <option value="libra">Libra  Esterlina</option>
+                    <option value="dolarCanadense">Dólar Canadense</option>
+                </select>
+                <br><br>
+
+                <!-- Botão para executar a conversão -->
+                <section class="buttonContato">
+                    <input type="button" value="Converter" onclick="mostrarCotacaoCambio()">
+                </section>
+                <br>
+
+                <!-- Saída do valor convertido -->
+                <div id="saidaConversao">
+                    <label for="idSaida">Saída:</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        function mostrarCotacaoCambio() {
+            // Obtenção do valor em reais
+            const valorReais = parseFloat(document.getElementById("valorReal").value);
+
+            // Verifica se a entrada é um número válido
+            if (isNaN(valorReais)) {
+                alert("Por favor, insira um valor válido em Reais.");
+                return;
+            }
+
+            // Obtém a moeda de destino selecionada
+            const moedaDestino = document.getElementById("moedaDestino").value;
+
+            // Variáveis para armazenar o valor convertido
+            let valorConvertido;
+
+            // Cotações das moedas (valor para 1 Real)
+            const cotacoes = {
+                dolar: 5.00,         // Cotação do Dólar Americano
+                euro: 6.00,          // Cotação do Euro
+                libra: 7.20,         // Cotação da Libra Esterlina
+                dolarCanadense: 4.00 // Cotação do Dólar Canadense
+            };
+
+            // Realiza a conversão de acordo com a moeda de destino
+            switch (moedaDestino) {
+                case "dolar":
+                    valorConvertido = valorReais / cotacoes.dolar;
+                    break;
+                case "euro":
+                    valorConvertido = valorReais / cotacoes.euro;
+                    break;
+                case "libra":
+                    valorConvertido = valorReais / cotacoes.libra;
+                    break;
+                case "dolarCanadense":
+                    valorConvertido = valorReais / cotacoes.dolarCanadense;
+                    break;
+                default:
+                    alert("Moeda de destino inválida.");
+                    return;
+            }
+
+            // Exibe o valor convertido na saída
+            document.getElementById("idSaida").textContent = `Valor convertido em ${moedaDestino.charAt(0).toUpperCase() + moedaDestino.slice(1)}: ${valorConvertido.toFixed(2)}`;
+        }
+    </script>
+</body
