@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 5 - Exercicio 4</legend>
+                <br>
+                <label for="exe4">Faça um programa que mostre os 10 primeiros elementos da Sequência de Fibonacci:  
+                    0 1 1 2 3 5 8 13 21... 
+                </label>
+                <br>
+                
+                <!-- Botão para executar a função -->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="mostreFibonaci()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saida dos resultados -->
+                    <label for="idSaida">Saida</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        // Função para mostra o fibonaci
+        function mostreFibonaci() {
+            // Inicializamos com os primeiros dois elementos
+            let fib = [0, 1];
+
+            // Geramos os próximos 8 elementos da sequência de Fibonacci
+            for (let i = 2; i < 10; i++) {
+                fib.push(fib[i - 1] + fib[i - 2]);
+            }
+
+            // Mostramos os resultados na saída
+            document.getElementById("idSaida").textContent = fib.join(' ');
+        }
+    </script>
+</body>
+
+</html>
