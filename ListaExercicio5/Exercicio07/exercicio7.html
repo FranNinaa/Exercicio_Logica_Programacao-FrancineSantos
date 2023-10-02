@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 5 - Exercicio 7</legend>
+                <br>
+                <label for="exe7">Em um jogo de adivinhação, o jogador deve descobrir um número entre 1 e 10 usando até três tentativas. 
+                    A cada tentativa o jogador é informado se o número foi descoberto, 
+                    ou se ele é maior ou menor do que a tentativa. Se após três tentativas 
+                    o jogador não descobrir o número, então ele perde o jogo. 
+                    Crie um algoritmo que implemente esse jogo.                   
+                </label>
+                <br>
+                
+                <!-- Botão para executar o jogo -->
+                <section class="buttonContato">
+                    <input type="button" value="Iniciar Jogo" onclick="iniciarJogo()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saída dos resultados -->
+                    <label for="idSaida">Saída</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        let numeroAlvo;
+
+        function iniciarJogo() {
+            numeroAlvo = Math.floor(Math.random() * 10) + 1;  // Número aleatório entre 1 e 10
+            let tentativas = 0;
+
+            while (tentativas < 3) {
+                const tentativa = parseInt(prompt(`Tentativa ${tentativas + 1}. Digite um número:`));
+
+                if (tentativa === numeroAlvo) {
+                    document.getElementById("idSaida").textContent = "Parabéns! Você acertou!";
+                    return;
+                } else if (tentativa < numeroAlvo) {
+                    alert("O número é maior.");
+                } else {
+                    alert("O número é menor.");
+                }
+
+                tentativas++;
+            }
+
+            document.getElementById("idSaida").textContent = `Você perdeu! O número era ${numeroAlvo}.`;
+        }
+    </script>
+</body>
+
+</html>
