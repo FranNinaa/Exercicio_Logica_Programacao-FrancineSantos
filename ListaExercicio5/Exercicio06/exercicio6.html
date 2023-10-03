@@ -64,45 +64,54 @@
     <!-- Script JS -->
     <script>
         function mostreIdades() {
+            // Obter o número de pessoas inserido pelo usuário
             const numPessoas = parseInt(document.getElementById("numPessoas").value);
 
+            // Inicializar variáveis para armazenar informações sobre as idades e cálculos
             let somaIdades = 0;
             let pessoasMaisDezoito = 0;
             let pessoasMenosCinco = 0;
             let maiorIdade = Number.MIN_VALUE;
 
+             // Iterar sobre o número de pessoas
             for (let i = 0; i < numPessoas; i++) {
+                 // Pedir ao usuário para inserir a idade de cada pessoa
                 const idade = parseInt(prompt(`Digite a idade da pessoa ${i + 1}:`));
 
+                // Verificar se a idade é um número válido
                 if (!isNaN(idade)) {
+                     // Calcular a soma das idades
                     somaIdades += idade;
 
+                     // Contar pessoas com mais de 18 anos
                     if (idade > 18) {
                         pessoasMaisDezoito++;
                     }
-
+                    // Contar pessoas com menos de 5 anos
                     if (idade < 5) {
                         pessoasMenosCinco++;
                     }
-
+                     // Atualizar a maior idade encontrada
                     if (idade > maiorIdade) {
                         maiorIdade = idade;
                     }
-                } else {
+                } else {          
+          // Se a idade não for um número válido, exibir uma mensagem de alerta
                     alert("Digite uma idade válida.");
                     return;
                 }
             }
-
+             // Calcular a média das idades
             const mediaIdade = somaIdades / numPessoas;
 
+            // Formatar os resultados para exibição
             const resultado = `
             Média de idade: ${mediaIdade.toFixed(2)} anos <br>
             Pessoas com mais de 18 anos: ${pessoasMaisDezoito} <br>
             Pessoas com menos de 5 anos: ${pessoasMenosCinco} <br>
             Maior idade: ${maiorIdade} anos
         `;
-        
+        // Atualizar o conteúdo do elemento HTML com os resultados
         document.getElementById("idSaida").innerHTML = resultado;
         }
     </script>
