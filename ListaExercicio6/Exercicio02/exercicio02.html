@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 6 - Exercicio 1 </legend>
+                <br>
+                <label for="exe1">Crie um programa que preencha automaticamente 
+                    (usando lógica, não apenas atribuindo diretamente) um vetor numérico com 10 posições, conforme abaixo:<br>
+                    <br>9	8	7	6	5	4	3	2	1	0
+                    <br>0	1	2	3	4	5	6	7	8	9</label>
+                <br><br>
+                
+                <!-- Botão para executar a função -->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="mostrarArray()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saida dos múltiplos -->
+                    <label for="idSaida">Saida</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+       
+        function mostrarArray() {
+            const tamanhoVetor = 10;
+            const vetor = [];
+        
+            // Preenche o vetor de forma reversa
+            for (let i = tamanhoVetor - 1; i >= 0; i--) {
+                vetor.push(`Posição ${9 - i}: ${i}`);
+            }
+        
+            // Converte o vetor em uma string com quebras de linha para exibição organizada
+            const resultado = vetor.join('<br>');
+        
+            // Exibe a saída no elemento com o ID "idSaida"
+            document.getElementById("idSaida").innerHTML = resultado;
+        }
+        
+        
+        
+    </script>
+</body>
+
+</html>
