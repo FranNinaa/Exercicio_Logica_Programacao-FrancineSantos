@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 6 - Exercicio 8</legend>
+                <br>
+                <label for="exe8">  Faça um algoritmo que preencha um vetor de 30
+                     posições com números entre 1 e 15 sorteados pelo computador. 
+                     Depois disso, peça para o usuário digitar um número (chave)
+                      e seu programa deve mostrar em que posições essa chave foi
+                    encontrada. Mostre também quantas vezes a chave foi sorteada.
+                </label>
+                <br><br>
+                
+                <!-- Botão para executar a função -->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="mostrarVetorSorteados()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saida dos múltiplos -->
+                    <label for="idSaida">Saida</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        function mostrarVetorSorteados() {
+            // Array para armazenar os números sorteados
+            var vetorSorteado = [];
+        
+            // Preenchendo o vetor com números sorteados entre 1 e 15
+            for (var i = 0; i < 30; i++) {
+                var numeroSorteado = Math.floor(Math.random() * 15) + 1;
+                vetorSorteado.push(numeroSorteado);
+            }
+        
+            // Solicitar que o usuário digite um número (chave)
+            var chave = parseInt(prompt("Digite um número para buscar no vetor:"));
+        
+            // Array para armazenar as posições da chave
+            var posicoesChave = [];
+            var quantidadeChaveSorteada = 0;
+        
+            // Procurar a chave no vetor
+            for (var i = 0; i < vetorSorteado.length; i++) {
+                if (vetorSorteado[i] === chave) {
+                    posicoesChave.push(i);
+                    quantidadeChaveSorteada++;
+                }
+            }
+        
+            // Exibir o vetor sorteado na saída do formulário
+            var saida = document.getElementById('idSaida');
+            saida.innerHTML = 'Vetor sorteado:<br>';
+            vetorSorteado.forEach((num, index) => {
+                saida.innerHTML += `${index + 1}. ${num}<br>`;
+            });
+        
+            // Exibir as posições da chave e a quantidade de vezes que foi sorteada
+            if (posicoesChave.length > 0) {
+                saida.innerHTML += `<br>A chave ${chave} foi encontrada nas posições:<br>`;
+                posicoesChave.forEach(posicao => {
+                    saida.innerHTML += `${posicao + 1}<br>`;
+                });
+                saida.innerHTML += `<br>A chave ${chave} foi sorteada ${quantidadeChaveSorteada} vezes.<br>`;
+            } else {
+                saida.innerHTML += `<br>A chave ${chave} não foi encontrada no vetor.<br>`;
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

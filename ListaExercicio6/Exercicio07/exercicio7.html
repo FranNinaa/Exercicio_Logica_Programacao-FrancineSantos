@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 6 - Exercicio 7</legend>
+                <br>
+                <label for="exe7"> Escreva um programa que leia "n" números e guarde-os em um vetor. No final,
+                    mostre o vetor inteiro na tela e em seguida mostre em que posições foram
+                    digitados valores que são múltiplos de 10.
+                </label>
+                <br><br>
+                
+                <!-- Botão para executar a função -->
+                <section class="buttonContato">
+                    <input type="button" value="Enviar" onclick="mostrarVetorMultiplus()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saida dos múltiplos -->
+                    <label for="idSaida">Saida</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output> 
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        function mostrarVetorMultiplus() {
+            // Array para armazenar os números
+            var numeros = [];
+            // Array para armazenar as posições dos múltiplos de 10
+            var posicoesMultiplus = [];
+        
+            // Ler a quantidade de números a serem lidos
+            var quantidadeNumeros = parseInt(prompt("Digite a quantidade de números a serem lidos:"));
+        
+            // Ler os números informados pelo usuário
+            for (var i = 0; i < quantidadeNumeros; i++) {
+                var numero = parseInt(prompt(`Digite o ${i + 1}º número:`));
+                numeros.push(numero);
+                if (numero % 10 === 0) {
+                    // Se o número for múltiplo de 10, armazena a posição
+                    posicoesMultiplus.push(i + 1);
+                }
+            }
+        
+            // Exibir o vetor completo na saída do formulário
+            var saida = document.getElementById('idSaida');
+            saida.innerHTML = 'Vetor completo:<br>';
+            numeros.forEach((num, index) => {
+                saida.innerHTML += `${index + 1}. ${num}<br>`;
+            });
+        
+            // Exibir as posições dos múltiplos de 10
+            if (posicoesMultiplus.length > 0) {
+                saida.innerHTML += '<br>Posições dos múltiplos de 10:<br>';
+                posicoesMultiplus.forEach(posicao => {
+                    saida.innerHTML += `${posicao}<br>`;
+                });
+            } else {
+                saida.innerHTML += '<br>Nenhum múltiplo de 10 foi digitado.<br>';
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
