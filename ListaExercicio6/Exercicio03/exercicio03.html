@@ -27,15 +27,15 @@
                 <!-- Título e instruções do exercício -->
                 <legend class="borda">Lista 6 - Exercicio 3</legend>
                 <br>
-                <label for="exe3">Crie um programa que preencha automaticamente (usando lógica, não apenas atribuindo diretamente) 
-                    um vetor numérico com 15 posições com os primeiros elementos da sequência de Fibonacci:<br>
-                    <br>1	1	2	3	5	8	13	21	34	55	89	144	233	377	610	987
-                    <br>0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15</label>
+                <label for="exe3"> Crie um programa que preencha automaticamente 
+                    (usando lógica, não apenas atribuindo diretamente) um vetor numérico com 10 posições, conforme abaixo:<br>
+                    <br>|  5 |  3 |  5 |  3 |  5 |  3 |  5 |  3 |  5 |  3 |
+                    <br>|  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |</label>
                 <br><br>
                 
                 <!-- Botão para executar a função -->
                 <section class="buttonContato">
-                    <input type="button" value="Enviar" onclick="mostrarArrayFibonacci()">
+                    <input type="button" value="Enviar" onclick="mostrarVetorNumerico()">
                 </section>
                 <br>
                 <div>
@@ -57,28 +57,23 @@
     <!-- Script JS -->
     <script>
        
-        function mostrarArrayFibonacci() {
-            const tamanhoVetor = 15;
-            const vetor = [];
+        function mostrarVetorNumerico() {
+            // Criando um vetor para armazenar os números
+            var vetorNumerico = [];
         
-            // Preenche o vetor com os primeiros elementos da sequência de Fibonacci
-            let a = 1;
-            let b = 1;
-            for (let i = 0; i < tamanhoVetor; i++) {
-                vetor.push(`Posição ${i}: ${a}`);
-                const temp = a + b;
-                a = b;
-                b = temp;
+            // Preenchendo o vetor conforme o padrão
+            for (var i = 0; i < 10; i++) {
+                // A cada duas posições, alterna entre 5 e 3
+                vetorNumerico.push({ posicao: i, valor: (i % 2 === 0 ? 5 : 3) });
             }
         
-            // Converte o vetor em uma string com quebras de linha para exibição organizada
-            const resultado = vetor.join('<br>');
-        
-            // Exibe a saída no elemento com o ID "idSaida"
-            document.getElementById("idSaida").innerHTML = resultado;
+            // Exibindo os valores na saída do formulário
+            var saida = document.getElementById('idSaida');
+            saida.innerHTML = 'Vetor Numérico:<br>';
+            vetorNumerico.forEach(item => {
+                saida.innerHTML += `Posição ${item.posicao}: ${item.valor}<br>`;
+            });
         }
-        
-        
         
         
     </script>
