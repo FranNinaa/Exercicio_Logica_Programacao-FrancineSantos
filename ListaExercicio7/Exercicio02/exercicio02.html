@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Exercício Lista 7 - Exercício 2</legend>
+                <br><br>
+
+                <label for="exe2">Crie um programa que leia o nome e a idade de
+                    9 pessoas e guarde esses valores em dois vetores, em posições relacionadas. No final,
+                    mostre uma listagem contendo apenas os dados das pessoas menores de idade.
+                </label>
+                <br><br>
+
+                <!-- Adicionado para ler os dados -->
+                <div id="dadosContainer"></div>
+                
+                <!-- Botão para adicionar campos de dados -->
+                <button class="buttonContato" type="button" onclick="adicionarCamposDeDados()">Adicionar campos de dados</button>
+                <br><br>
+                
+                <!-- Botão para executar a função -->
+                <section>
+                    <input type="button" value="Mostrar Menores de Idade" onclick="mostrarMenoresDeIdade()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saida dos dados dos menores de idade -->
+                    <label for="idSaida">Saida</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+                
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        function adicionarCamposDeDados() {
+            const quantidadePessoas = 9; // Número de pessoas a serem cadastradas
+            const dadosContainer = document.getElementById('dadosContainer');
+            dadosContainer.innerHTML = '';  // Limpar o conteúdo antes de adicionar novos campos
+        
+            for (let i = 1; i <= quantidadePessoas; i++) {
+                const labelNome = document.createElement('label');
+                labelNome.innerHTML = `Nome da pessoa ${i}: `;
+                
+                const inputNome = document.createElement('input');
+                inputNome.type = 'text';
+                inputNome.id = `idNome${i}`;
+                inputNome.name = `nmNome${i}`;
+                
+                const labelIdade = document.createElement('label');
+                labelIdade.innerHTML = `Idade da pessoa ${i}: `;
+                
+                const inputIdade = document.createElement('input');
+                inputIdade.type = 'number';
+                inputIdade.id = `idIdade${i}`;
+                inputIdade.name = `nmIdade${i}`;
+                inputIdade.min = 0;
+                
+                dadosContainer.appendChild(labelNome);
+                dadosContainer.appendChild(inputNome);
+                dadosContainer.appendChild(document.createElement('br'));
+                dadosContainer.appendChild(labelIdade);
+                dadosContainer.appendChild(inputIdade);
+                dadosContainer.appendChild(document.createElement('br'));
+                dadosContainer.appendChild(document.createElement('br'));
+            }
+        }
+        
+        function mostrarMenoresDeIdade() {
+            const quantidadePessoas = 9; // Número de pessoas cadastradas
+            const menoresDeIdade = [];
+
+            // Ler os dados das pessoas
+            for (let i = 1; i <= quantidadePessoas; i++) {
+                const idade = parseInt(document.getElementById(`idIdade${i}`).value);
+                const nome = document.getElementById(`idNome${i}`).value;
+
+                if (idade < 18) {
+                    menoresDeIdade.push({ nome, idade });
+                }
+            }
+
+            // Construir a saída com os dados dos menores de idade
+            let saida = '';
+            for (const pessoa of menoresDeIdade) {
+                saida += `Nome: ${pessoa.nome} / Idade: ${pessoa.idade}\n`;
+            }
+
+            // Exibir os resultados na saída
+            const idSaida = document.getElementById('idSaida');
+            idSaida.innerText = saida;
+        }
+    </script>
+</body>
+
+</html>
