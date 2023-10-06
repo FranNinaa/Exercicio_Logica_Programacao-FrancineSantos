@@ -34,7 +34,7 @@
                 <br><br>
                 
                 <!-- Botão para executar a função -->
-                <section class="buttonContato">
+                <section>
                     <input type="button" value="Enviar" onclick="mostrarVetorMultiplus()">
                 </section>
                 <br>
@@ -67,10 +67,12 @@
         
             // Ler os números informados pelo usuário
             for (var i = 0; i < quantidadeNumeros; i++) {
+                // Ler e armazenar o número
                 var numero = parseInt(prompt(`Digite o ${i + 1}º número:`));
                 numeros.push(numero);
+        
+                // Verificar se o número é múltiplo de 10 e armazenar a posição
                 if (numero % 10 === 0) {
-                    // Se o número for múltiplo de 10, armazena a posição
                     posicoesMultiplus.push(i + 1);
                 }
             }
@@ -78,17 +80,18 @@
             // Exibir o vetor completo na saída do formulário
             var saida = document.getElementById('idSaida');
             saida.innerHTML = 'Vetor completo:<br>';
-            numeros.forEach((num, index) => {
-                saida.innerHTML += `${index + 1}. ${num}<br>`;
-            });
+            for (var i = 0; i < numeros.length; i++) {
+                saida.innerHTML += `${i + 1}. ${numeros[i]}<br>`;
+            }
         
             // Exibir as posições dos múltiplos de 10
             if (posicoesMultiplus.length > 0) {
                 saida.innerHTML += '<br>Posições dos múltiplos de 10:<br>';
-                posicoesMultiplus.forEach(posicao => {
-                    saida.innerHTML += `${posicao}<br>`;
-                });
+                for (var j = 0; j < posicoesMultiplus.length; j++) {
+                    saida.innerHTML += `${posicoesMultiplus[j]}<br>`;
+                }
             } else {
+                // Se não houver múltiplos de 10, exibir mensagem
                 saida.innerHTML += '<br>Nenhum múltiplo de 10 foi digitado.<br>';
             }
         }

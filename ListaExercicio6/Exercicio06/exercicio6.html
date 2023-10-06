@@ -35,7 +35,7 @@
                 <br><br>
                 
                 <!-- Botão para executar a função -->
-                <section class="buttonContato">
+                <section>
                     <input type="button" value="Enviar" onclick="mostrarVetorInverso()">
                 </section>
                 <br>
@@ -58,28 +58,33 @@
     <!-- Script JS -->
     <script>
         function mostrarVetorInverso() {
-            // Array para armazenar os nomes
-            var nomes = [];
+            // Inicializa um array vazio chamado 'nomes'
+            const nomes = [];
         
-            // Ler os nomes informados pelo usuário
+            // Loop para receber nomes do usuário e armazená-los no array 'nomes'
             while (true) {
-                var nome = prompt("Digite um nome ou deixe em branco para parar:  ");
-                if (nome === "" || nome === null) {
-                    break;
-                }
-                nomes.push(nome);
+                const nome = prompt("Digite um nome ou deixe em branco para parar:");
+                if (!nome) break;  // Se o usuário deixar em branco, o loop é interrompido
+                nomes.push(nome);  // Adiciona o nome ao array 'nomes'
             }
         
-            // Inverter a ordem dos nomes
-            var nomesInvertidos = nomes.reverse();
+            // Inverte a ordem dos elementos no array 'nomes'
+            const nomesInvertidos = nomes.reverse();
         
-            // Exibir os nomes na ordem inversa na saída do formulário
-            var saida = document.getElementById('idSaida');
+            // Obtém o elemento HTML com o id 'idSaida'
+            const saida = document.getElementById('idSaida');
+        
+            // Define o texto do elemento 'saida' com a mensagem inicial
             saida.textContent = 'Nomes na ordem inversa:\n';
-            nomesInvertidos.forEach((nome, index) => {
-                saida.textContent += `${index + 1}. ${nome}\n`;
-            });
+        
+            // Loop para exibir os nomes invertidos com seus índices
+            for (let i = 0; i < nomesInvertidos.length; i++) {
+                const nome = nomesInvertidos[i];
+                saida.textContent += `${i + 1}. ${nome}\n`;  // Concatena o índice e o nome no texto de saída
+            }
         }
+        
+        
         
     </script>
 </body>
