@@ -36,7 +36,7 @@
                 <br><br>
                 
                 <!-- Botão para executar a função -->
-                <section class="buttonContato">
+                <section>
                     <input type="button" value="Enviar" onclick="mostrarVetorSorteados()">
                 </section>
                 <br>
@@ -86,21 +86,22 @@
             // Exibir o vetor sorteado na saída do formulário
             var saida = document.getElementById('idSaida');
             saida.innerHTML = 'Vetor sorteado:<br>';
-            vetorSorteado.forEach((num, index) => {
-                saida.innerHTML += `${index + 1}. ${num}<br>`;
-            });
+            for (var i = 0; i < vetorSorteado.length; i++) {
+                saida.innerHTML += `${i + 1}. ${vetorSorteado[i]}<br>`;
+            }
         
             // Exibir as posições da chave e a quantidade de vezes que foi sorteada
             if (posicoesChave.length > 0) {
                 saida.innerHTML += `<br>A chave ${chave} foi encontrada nas posições:<br>`;
-                posicoesChave.forEach(posicao => {
-                    saida.innerHTML += `${posicao + 1}<br>`;
-                });
+                for (var i = 0; i < posicoesChave.length; i++) {
+                    saida.innerHTML += `${posicoesChave[i] + 1}<br>`;
+                }
                 saida.innerHTML += `<br>A chave ${chave} foi sorteada ${quantidadeChaveSorteada} vezes.<br>`;
             } else {
                 saida.innerHTML += `<br>A chave ${chave} não foi encontrada no vetor.<br>`;
             }
         }
+        
         
     </script>
 </body>
