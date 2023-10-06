@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuração da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Área de Cabeçalho -->
+    <header>
+        <h1></h1>
+    </header>
+
+    <!-- Sessao Principal -->
+    <main>
+        <form action="" method="post">
+            <fieldset class="borda">
+                <!-- Título e instruções do exercício -->
+                <legend class="borda">Lista 7 - Exercicio 1</legend>
+                <br>
+                <label for="exe1">Faça um algoritmo que leia a nota de "n" alunos de uma turma e guarde-as em um vetor. No final, mostre:
+                    <br>
+                    <br>a) Qual e a media da turma
+                    <br>b) Quantos alunos estão acima da média da turma
+                    <br>c) Qual foi a maior nota digitada
+                    <br>d) Em que posições a maior nota aparece
+                </label>
+                <br><br>
+
+                <label for="alunos">Digite o número de alunos:</label>
+                <input type="text" id="idAluno" name="nmAluno">
+                <br><br>
+                
+                <!-- Adicionado para ler as notas -->
+                <div id="notasContainer"></div>
+                
+                <!-- Botão para adicionar campos de notas -->
+                <button class="buttonContato" type="button" onclick="adicionarCamposDeNotas()">Adicionar campos de notas</button>
+                <br><br>
+                
+                <!-- Botão para executar a função -->
+                <section>
+                    <input type="button" value="Enviar" onclick="mostrarNotaMedia()">
+                </section>
+                <br>
+                <div>
+                    <!-- Saida dos múltiplos -->
+                    <label for="idSaida">Saida</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+                
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Sessão de Rodapé -->
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        function adicionarCamposDeNotas() {
+              // Obtemos o número de alunos a partir do valor inserido no campo de entrada
+            const numeroAlunos = parseInt(document.getElementById('idAluno').value);
+            const notasContainer = document.getElementById('notasContainer');
+            notasContainer.innerHTML = '';  // Limpar o conteúdo antes de adicionar novos campos
+        
+             // Loop para criar campos de notas para cada aluno
+            for (let i = 1; i <= numeroAlunos; i++) {
+                const label = document.createElement('label');
+                label.innerHTML = `Digite a nota do aluno ${i}: `;
+                
+                const inputNota = document.createElement('input');
+                inputNota.type = 'number';
+                inputNota.id = `idNota${i}`;
+                inputNota.name = `nmNota${i}`;
+                inputNota.min = 0;
+                inputNota.max = 10;
+                
+                notasContainer.appendChild(label);
+                notasContainer.appendChild(inputNota);
+                notasContainer.appendChild(document.createElement('br'));
+                notasContainer.appendChild(document.createElement('br'));
+            }
+        }
+        
+
+        function mostrarNotaMedia() {
+            const numeroAlunos = parseInt(document.getElementById('idAluno').value);
+        
+            // Array para armazenar as notas
+            const notas = [];
+        
+            // Ler as notas dos alunos
+            for (let i = 1; i <= numeroAlunos; i++) {
+                const nota = parseFloat(document.getElementById('idNota' + i).value);
+                notas.push(nota);
+            }
+        
+            // Calcular a média
+            const somaNotas = notas.reduce((total, nota) => total + nota, 0);
+            const media = somaNotas / numeroAlunos;
+        
+            // Encontrar a maior nota e suas posições
+            let maiorNota = notas[0];
+            const posicoesMaiorNota = [0];
+            for (let i = 1; i < notas.length; i++) {
+                if (notas[i] > maiorNota) {
+                    maiorNota = notas[i];
+                    posicoesMaiorNota = [i];
+                } else if (notas[i] === maiorNota) {
+                    posicoesMaiorNota.push(i);
+                }
+            }
+        
+            // Encontrar quantos alunos estão acima da média
+            let alunosAcimaDaMedia = 0;
+            for (let i = 0; i < notas.length; i++) {
+                if (notas[i] > media) {
+                    alunosAcimaDaMedia++;
+                }
+            }
+        
+            // Construir a saída com os resultados
+            const saida = `
+                a) A média da turma é: ${media.toFixed(2)}
+                b) ${alunosAcimaDaMedia} aluno(s) está(ão) acima da média da turma
+                c) A maior nota digitada é: ${maiorNota}
+                d) A maior nota aparece nas posições: ${posicoesMaiorNota.join(', ')}
+            `;
+        
+            // Exibir os resultados na saída
+            const idSaida = document.getElementById('idSaida');
+            idSaida.innerText = saida;
+        }
+        
+    </script>
+</body>
+</html>
