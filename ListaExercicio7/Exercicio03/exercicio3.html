@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1></h1>
+    </header>
+
+    <main>
+        <form>
+            <fieldset class="borda">
+                <legend class="borda">Exercício Lista 7 - Exercício 3</legend>
+                <br><br>
+
+                <label for="nomeInput">Nome do funcionário:</label>
+                <input type="text" id="nomeInput" placeholder="Digite o nome">
+
+                <label for="Genero" class="etiqueta">Sexo:</label>
+                <input type="radio" id="radioFem" name="sexo" value="fem">
+                <label for="radioFem">Feminino</label>
+                <input type="radio" id="radioMasc" name="sexo" value="masc">
+                <label for="radioMasc">Masculino</label><br><br>
+
+                <label for="salarioInput">Salário do funcionário:</label>
+                <input type="text" id="salarioInput" placeholder="Digite o salário">
+
+                <button class="buttonContato" type="button" onclick="adicionarCamposDeDados()">Adicionar campos de dados</button>
+                <br><br>
+
+                <section>
+                    <input type="button" value="Mostrar Funcionárias com Salário > 5000" onclick="mostrarFuncionarias()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saída</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <script>
+        // Vetores para armazenar os dados
+        let nomes = [];
+        let sexos = [];
+        let salarios = [];
+
+        function adicionarCamposDeDados() {
+            // Obter os valores dos campos de nome, sexo e salário
+            let nomeInput = document.getElementById("nomeInput");
+            let sexoInputs = document.getElementsByName("sexo");
+            let salarioInput = document.getElementById("salarioInput");
+
+            let nome = nomeInput.value;
+
+            let sexo;
+            for (let i = 0; i < sexoInputs.length; i++) {
+                if (sexoInputs[i].checked) {
+                    sexo = sexoInputs[i].value;
+                    break;
+                }
+            }
+
+            let salario = parseFloat(salarioInput.value);
+
+            // Limpar os campos de entrada
+            nomeInput.value = "";
+            for (let i = 0; i < sexoInputs.length; i++) {
+                sexoInputs[i].checked = false;
+            }
+            salarioInput.value = "";
+
+            // Validar e adicionar os dados aos vetores
+            if (nome && (sexo === 'masc' || sexo === 'fem') && !isNaN(salario)) {
+                nomes.push(nome);
+                sexos.push(sexo);
+                salarios.push(salario);
+            } else {
+                alert("Dados inválidos. Certifique-se de inserir valores corretos.");
+            }
+        }
+
+        function mostrarFuncionarias() {
+            let saida = "";
+            for (let i = 0; i < nomes.length; i++) {
+                if (sexos[i] === 'fem' && salarios[i] > 5000) {
+                    saida += `Nome: ${nomes[i]}, Sexo: Feminino, Salário: R$ ${salarios[i].toFixed(2)}\n`;
+                }
+            }
+            document.getElementById("idSaida").innerText = saida;
+        }
+    </script>
+</body>
+
+</html>
