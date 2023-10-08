@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Perguntas e Respostas</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1></h1>
+    </header>
+
+    <main>
+        <form>
+            <fieldset class="borda">
+                <legend class="borda">Jogo de Perguntas e Respostas - Capitais dos Estados Brasileiros</legend>
+                <br>
+                <section>
+                    <input type="button" value="Iniciar Jogo" onclick="iniciarJogo()">
+                </section>
+                <br>
+                <label for="pergunta">Pergunta:</label>
+                  <br>
+                    <span  id="pergunta"></span>
+                    <br><br><br>
+                <div>
+                    <label for="respostaInput">Sua Resposta:</label>
+                    <input type="text" id="respostaInput" placeholder="Digite a capital">
+                </div>
+
+                <section>
+                    <input type="button" value="Responder" onclick="verificarResposta()">
+                </section>
+                <br><br>
+
+                <div>
+                    <label for="idSaida">Resultados:</label><br>
+                    <ol id="resultados"></ol>
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <script>
+        const estadosCapitais = {
+            "Acre": "Rio Branco",
+            "Alagoas": "Maceió",
+            "Amapá": "Macapá",
+            "Amazonas": "Manaus",
+            "Bahia": "Salvador",
+            "Ceará": "Fortaleza",
+            "Espírito Santo": "Vitória",
+            "Goiás": "Goiânia",
+            "Maranhão": "São Luís",
+            "Mato Grosso": "Cuiabá",
+            "Mato Grosso do Sul": "Campo Grande",
+            "Minas Gerais": "Belo Horizonte",
+            "Pará": "Belém",
+            "Paraíba": "João Pessoa",
+            "Paraná": "Curitiba",
+            "Pernambuco": "Recife",
+            "Piauí": "Teresina",
+            "Rio de Janeiro": "Rio de Janeiro",
+            "Rio Grande do Norte": "Natal",
+            "Rio Grande do Sul": "Porto Alegre",
+            "Rondônia": "Porto Velho",
+            "Roraima": "Boa Vista",
+            "Santa Catarina": "Florianópolis",
+            "São Paulo": "São Paulo",
+            "Sergipe": "Aracaju",
+            "Tocantins": "Palmas",
+            "Distrito Federal": "Brasília"
+        };
+
+        const jogadores = [
+            { nome: "Jogador 1", pontuacao: 0 },
+            { nome: "Jogador 2", pontuacao: 0 },
+            { nome: "Jogador 3", pontuacao: 0 },
+            { nome: "Jogador 4", pontuacao: 0 }
+        ];
+
+        let perguntas = [];
+        for (let estado in estadosCapitais) {
+            perguntas.push(estado);
+        }
+        let perguntaAtual = null;
+
+        function iniciarJogo() {
+            reiniciarJogo();
+            proximaPergunta();
+        }
+
+        function proximaPergunta() {
+            if (perguntas.length > 0) {
+                const indice = Math.floor(Math.random() * perguntas.length);
+                perguntaAtual = perguntas.splice(indice, 1)[0];
+                document.getElementById("pergunta").innerText = `Qual é a capital do estado ${perguntaAtual}?`;
+            } else {
+                finalizarJogo();
+            }
+        }
+
+        function verificarResposta() {
+            const respostaInput = document.getElementById("respostaInput").value;
+            const respostaCorreta = estadosCapitais[perguntaAtual];
+
+            const resultado = {
+                pergunta: perguntaAtual,
+                resposta: respostaInput,
+                correta: respostaInput.toLowerCase() === respostaCorreta.toLowerCase()
+            };
+
+            const resultadosList = document.getElementById("resultados");
+            const listItem = document.createElement("li");
+            listItem.textContent = `${resultado.pergunta}: ${resultado.correta ? 'Correta' : 'Incorreta'}`;
+            resultadosList.appendChild(listItem);
+
+            if (resultado.correta) {
+                const indiceJogador = Math.floor(Math.random() * jogadores.length);
+                jogadores[indiceJogador].pontuacao++;
+            }
+
+            document.getElementById("respostaInput").value = "";
+            proximaPergunta();
+        }
+
+        function finalizarJogo() {
+            jogadores.sort(function(a, b) {
+                return b.pontuacao - a.pontuacao;
+            });
+        
+            const resultadosList = document.getElementById("resultados");
+            resultadosList.innerHTML = "";
+        
+            for (let i = 0; i < jogadores.length; i++) {
+                const listItem = document.createElement("li");
+                listItem.textContent = jogadores[i].nome + ": " + jogadores[i].pontuacao + " ponto(s)";
+                resultadosList.appendChild(listItem);
+            }
+        }
+
+        function reiniciarJogo() {
+            for (let i = 0; i < jogadores.length; i++) {
+                jogadores[i].pontuacao = 0;
+            }
+            perguntas = Object.keys(estadosCapitais);
+            perguntaAtual = null;
+            const resultadosList = document.getElementById("resultados");
+            resultadosList.innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>

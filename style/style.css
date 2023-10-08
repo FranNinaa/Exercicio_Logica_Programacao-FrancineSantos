@@ -74,7 +74,8 @@
   input[type="numeroCandidato"],
   input[type="nomeCandidato"],
   textarea,
-  select {
+  select,
+  span  {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;

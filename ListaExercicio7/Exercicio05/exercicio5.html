@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenação de Números</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Ordenação de Números</h1>
+    </header>
+
+    <main>
+        <form>
+            <fieldset class="borda">
+                <legend class="borda">Informações Meteorológicas</legend>
+                <br><br>
+
+                <label for="numerosInput">Digite 10 números separados por vírgula:</label>
+                <input type="text" id="numerosInput" placeholder="Exemplo: 5, 3, 10, 8, ...">
+
+                <section>
+                    <input type="button" value="Ordem crescente" onclick="ordemCrescente()">
+                </section>
+                <br><br>
+                <section>
+                    <input type="button" value="Ordem decrescente" onclick="ordemDecrescente()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saída</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <script>
+        function parseNumbers() {
+            const numerosInput = document.getElementById("numerosInput").value;
+            const numerosArray = numerosInput.split(',').map(function(num) {
+                return parseInt(num.trim());
+            });
+            return numerosArray;
+        }
+
+        function ordemCrescente() {
+            const numerosArray = parseNumbers();
+            for (let i = 0; i < numerosArray.length; i++) {
+                for (let j = i + 1; j < numerosArray.length; j++) {
+                    if (numerosArray[i] > numerosArray[j]) {
+                        const temp = numerosArray[i];
+                        numerosArray[i] = numerosArray[j];
+                        numerosArray[j] = temp;
+                    }
+                }
+            }
+            document.getElementById("idSaida").textContent = "Números em ordem crescente: " + numerosArray.join(', ');
+        }
+
+        function ordemDecrescente() {
+            const numerosArray = parseNumbers();
+            for (let i = 0; i < numerosArray.length; i++) {
+                for (let j = i + 1; j < numerosArray.length; j++) {
+                    if (numerosArray[i] < numerosArray[j]) {
+                        const temp = numerosArray[i];
+                        numerosArray[i] = numerosArray[j];
+                        numerosArray[j] = temp;
+                    }
+                }
+            }
+            document.getElementById("idSaida").textContent = "Números em ordem decrescente: " + numerosArray.join(', ');
+        }
+    </script>
+</body>
+
+</html>
