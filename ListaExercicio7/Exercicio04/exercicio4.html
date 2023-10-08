@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteorologia</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Meteorologia</h1>
+    </header>
+
+    <main>
+        <form>
+            <fieldset class="borda">
+                <legend class="borda">Informações Meteorológicas</legend>
+                <br><br>
+
+                <label for="diaInput">Dia (1-10):</label>
+                <input type="number" id="diaInput" placeholder="Digite o dia" min="1" max="10">
+
+                <label for="temperaturaInput">Temperatura do dia:</label>
+                <input type="number" id="temperaturaInput" placeholder="Digite a temperatura">
+
+                <button class="buttonContato" type="button" onclick="adicionarTemperatura()">Adicionar Temperatura</button>
+                <br><br>
+
+                <section>
+                    <input type="button" value="Calcular Média e Verificar Temperatura" onclick="calcularMediaEVerificar()">
+                </section>
+                <br>
+                <div>
+                    <label for="idSaida">Saída</label><br>
+                    <output type="text" id="idSaida" name="nmSaida"></output>
+                </div>
+
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <script>
+        const temperaturas = new Array(10).fill(0);  // Vetor para armazenar as temperaturas
+
+        function adicionarTemperatura() {
+            const diaInput = parseInt(document.getElementById("diaInput").value);
+            const temperaturaInput = parseFloat(document.getElementById("temperaturaInput").value);
+
+            if (isNaN(diaInput) || diaInput < 1 || diaInput > 10) {
+                alert("Dia inválido. Insira um dia entre 1 e 10.");
+                return;
+            }
+
+            if (isNaN(temperaturaInput)) {
+                alert("Temperatura inválida. Insira uma temperatura numérica.");
+                return;
+            }
+
+            temperaturas[diaInput] = temperaturaInput;
+            alert(`Temperatura do dia ${diaInput} adicionada: ${temperaturaInput} °C.`);
+
+            // Limpar os campos de input
+            document.getElementById("diaInput").value = "";
+            document.getElementById("temperaturaInput").value = "";
+        }
+
+        function calcularMediaEVerificar() {
+            decrementarDia(); // Decrementa o dia de 10 a 1
+            const totalDias = temperaturas.length;
+            let somaTemperaturas = 1;
+            for (let i = 0; i < totalDias; i++) {
+                somaTemperaturas += temperaturas[i];
+            }
+            const mediaTemperaturas = somaTemperaturas / totalDias;
+
+            const diaInput = parseInt(document.getElementById("diaInput").value);
+            const temperaturaDia = temperaturas[diaInput];
+
+            let saida = "Média das temperaturas: " + mediaTemperaturas.toFixed(2) + " °C.\n";
+
+            if (!isNaN(temperaturaDia)) {
+                if (temperaturaDia > mediaTemperaturas) {
+                    saida += "A temperatura do dia " + diaInput + " estava acima da média.";
+                } else if (temperaturaDia < mediaTemperaturas) {
+                    saida += "A temperatura do dia " + diaInput + " estava abaixo da média.";
+                } else {
+                    saida += "A temperatura do dia " + diaInput + " estava na média.";
+                }
+            } 
+
+            document.getElementById("idSaida").textContent = saida;
+        }
+
+        function decrementarDia() {
+            const diaInput = document.getElementById("diaInput");
+            let diaAtual = parseInt(diaInput.value);
+            if (diaAtual > 1) {
+                diaAtual--;
+                diaInput.value = diaAtual;
+            }
+        }
+    </script>
+</body>
+
+</html>
