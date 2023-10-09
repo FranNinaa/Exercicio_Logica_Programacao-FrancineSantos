@@ -22,7 +22,7 @@
     <form id="cadastroAlunoForm" onsubmit="handleFormSubmit(event)">
       <br><br>
       <fieldset class="conjunto-campos">
-        <legend class="borda"></legend>
+        <legend class="borda">Cadastro de Alunos</legend>
         <br>
         <!-- Campos do Formulário -->
         <label for="NomeAluno" class="etiqueta">Nome do Aluno:</label>
@@ -57,6 +57,10 @@
          <input type="radio" id="radioMasc" name="genero" value="Masculino">
          <label for="radioMasc">Masculino</label><br><br>
 
+      </fieldset>
+      <br><br>
+      <fieldset class="conjunto-campos">
+        <legend class="borda">Cadastro de Notas</legend>
         <!-- Cadastro de Notas -->
         <label for="Nota1" class="etiqueta">Cadastre as notas do Aluno</label>
         <br><br>
@@ -72,17 +76,25 @@
         <label for="Nota4" class="etiqueta">Quarta nota:</label>
         <input type="number" name="ntNota4" id="idNota4" required autofocus><br><br>
 
-        <!-- Botões -->
         <section class="buttonCadastroAluno">
-          <input class="cadastroAluno" type="submit" value="Consultar" onclick="mostrarDadosAlunos()">
+          <input class="cadastroAluno" type="submit" value="Salvar Todos os Dados" onclick="salvarDadosAlunos()">
         </section>
-        <br><br>
-        <div>
-          <label for="idSaida">Mostrar dados dos Alunos</label><br>
-          <output id="idSaida"></output>
-        </div>
         <br>
       </fieldset>
+      <br><br>
+        <!-- Botões -->
+        
+        <fieldset class="conjunto-campos">
+          <legend class="borda">Mostrar dados dos Alunos</legend>
+          <br><br>  
+          <div>
+            <output id="idSaida"></output>
+          </div>
+          <section class="buttonCadastroAluno">
+            <input class="cadastroAluno" type="submit" value="Consultar Alunos" onclick="mostrarDadosAlunos()">
+          </section>
+          <br>
+        </fieldset>
     </form>
 
     <script>
@@ -129,22 +141,49 @@
         const media = totalNotas / notas.length;
         return media.toFixed(2);
       }
-    
+         // Função para salvar os dados do aluno
+         function salvarDadosAlunos() {
+          const aluno = {
+              nome: document.getElementById('idNomeAluno').value,
+              nomeMae: document.getElementById('idNomeMae').value,
+              nomePai: document.getElementById('idNomePai').value,
+              endereco: document.getElementById('idEndereco').value,
+              telefonePai: document.getElementById('idTelefone').value,
+              notas: [
+                  parseFloat(document.getElementById('idNota1').value),
+                  parseFloat(document.getElementById('idNota2').value),
+                  parseFloat(document.getElementById('idNota3').value),
+                  parseFloat(document.getElementById('idNota4').value)
+              ]
+          };
+
+          // Adicionar o aluno à lista
+          alunos.push(aluno);
+
+          // Limpar o formulário
+          document.getElementById('cadastroAlunoForm').reset();
+      }
+
+      const alunos = [];  // Array para armazenar os alunos
+
+      // Função para mostrar os dados dos alunos
       function mostrarDadosAlunos() {
-        let output = '';
-    
-        for (let i = 0; i < nomesAlunos.length; i++) {
-            const media = calcularMedia(notasAlunos[i]);
-            output += `Aluno: ${nomesAlunos[i]},<br>
-                       Mãe: ${nomesMae[i]},<br>
-                       Pai: ${nomesPai[i]},<br>
-                       Endereço: ${enderecosAlunos[i]},<br>
-                       Telefone do Pai: ${telefonesPais[i]},<br>
-                       Média Final: ${media}<br><br>`;
-        }
-    
-        document.getElementById('idSaida').innerHTML = output;
-    }
+          let output = '';
+
+          for (let i = 0; i < alunos.length; i++) {
+              const aluno = alunos[i];
+              const media = calcularMedia(aluno.notas);
+
+              output += `Aluno: ${aluno.nome},<br>
+                         Mãe: ${aluno.nomeMae},<br>
+                         Pai: ${aluno.nomePai},<br>
+                         Endereço: ${aluno.endereco},<br>
+                         Telefone do Pai: ${aluno.telefonePai},<br>
+                         Média Final: ${media}<br><br>`;
+          }
+
+          document.getElementById('idSaida').innerHTML = output;
+      }
     </script>
   </body>
 </html>
