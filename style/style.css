@@ -16,7 +16,7 @@
     --corNeutro2: #eee;
     --corSelect: #007bff;
   }
-  
+   
   
   /* Estilo padrão para todos os formulários */
   body {
@@ -221,6 +221,7 @@
   
   /* Estilo para botões */
   input[type="button"],
+  input[type="submit"],
   input[type="reset"],
   .buttonContato {
     background-color: var(--corSelect);
@@ -231,6 +232,7 @@
     font-size: 18px;
     cursor: pointer;
   }
+  input[type="button"]:hover,
   input[type="button"]:hover,
   input[type="reset"]:hover,
   .buttonContato:hover {
