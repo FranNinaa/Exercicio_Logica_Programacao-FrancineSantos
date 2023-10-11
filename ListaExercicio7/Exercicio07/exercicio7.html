@@ -53,6 +53,7 @@
     </footer>
 
     <script>
+         // Dados dos estados e suas capitais
         const estadosCapitais = {
             "Acre": "Rio Branco",
             "Alagoas": "Maceió",
@@ -82,25 +83,26 @@
             "Tocantins": "Palmas",
             "Distrito Federal": "Brasília"
         };
-
+        // Dados dos jogadores e suas pontuações iniciais
         const jogadores = [
             { nome: "Jogador 1", pontuacao: 0 },
             { nome: "Jogador 2", pontuacao: 0 },
             { nome: "Jogador 3", pontuacao: 0 },
             { nome: "Jogador 4", pontuacao: 0 }
         ];
-
+        // Array para armazenar as perguntas a serem feitas
         let perguntas = [];
         for (let estado in estadosCapitais) {
             perguntas.push(estado);
         }
         let perguntaAtual = null;
 
+         // Função para iniciar o jogo
         function iniciarJogo() {
             reiniciarJogo();
             proximaPergunta();
         }
-
+ // Função para obter a próxima pergunta
         function proximaPergunta() {
             if (perguntas.length > 0) {
                 const indice = Math.floor(Math.random() * perguntas.length);
@@ -110,22 +112,24 @@
                 finalizarJogo();
             }
         }
-
+            // Função para verificar a resposta
         function verificarResposta() {
             const respostaInput = document.getElementById("respostaInput").value;
             const respostaCorreta = estadosCapitais[perguntaAtual];
 
+         // Objeto para armazenar o resultado da pergunta
             const resultado = {
                 pergunta: perguntaAtual,
                 resposta: respostaInput,
                 correta: respostaInput.toLowerCase() === respostaCorreta.toLowerCase()
             };
-
+             // Adiciona o resultado ao histórico de resultados
             const resultadosList = document.getElementById("resultados");
             const listItem = document.createElement("li");
             listItem.textContent = `${resultado.pergunta}: ${resultado.correta ? 'Correta' : 'Incorreta'}`;
             resultadosList.appendChild(listItem);
 
+        // Atualiza a pontuação dos jogadores e exibe a próxima pergunta
             if (resultado.correta) {
                 const indiceJogador = Math.floor(Math.random() * jogadores.length);
                 jogadores[indiceJogador].pontuacao++;
@@ -134,7 +138,7 @@
             document.getElementById("respostaInput").value = "";
             proximaPergunta();
         }
-
+    // Função para finalizar o jogo e exibir os resultados finais
         function finalizarJogo() {
             jogadores.sort(function(a, b) {
                 return b.pontuacao - a.pontuacao;
@@ -149,6 +153,7 @@
                 resultadosList.appendChild(listItem);
             }
         }
+    // Função para reiniciar o jogo
 
         function reiniciarJogo() {
             for (let i = 0; i < jogadores.length; i++) {
