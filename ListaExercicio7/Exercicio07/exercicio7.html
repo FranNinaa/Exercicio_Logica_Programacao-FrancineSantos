@@ -25,9 +25,9 @@
                 </section>
                 <br>
                 <label for="pergunta">Pergunta:</label>
-                  <br>
-                    <span  id="pergunta"></span>
-                    <br><br><br>
+                <br>
+                <span id="pergunta"></span>
+                <br><br><br>
                 <div>
                     <label for="respostaInput">Sua Resposta:</label>
                     <input type="text" id="respostaInput" placeholder="Digite a capital">
@@ -53,7 +53,7 @@
     </footer>
 
     <script>
-         // Dados dos estados e suas capitais
+        // Dados dos estados e suas capitais
         const estadosCapitais = {
             "Acre": "Rio Branco",
             "Alagoas": "Maceió",
@@ -97,12 +97,12 @@
         }
         let perguntaAtual = null;
 
-         // Função para iniciar o jogo
+        // Função para iniciar o jogo
         function iniciarJogo() {
             reiniciarJogo();
             proximaPergunta();
         }
- // Função para obter a próxima pergunta
+        // Função para obter a próxima pergunta
         function proximaPergunta() {
             if (perguntas.length > 0) {
                 const indice = Math.floor(Math.random() * perguntas.length);
@@ -112,24 +112,24 @@
                 finalizarJogo();
             }
         }
-            // Função para verificar a resposta
+        // Função para verificar a resposta
         function verificarResposta() {
             const respostaInput = document.getElementById("respostaInput").value;
             const respostaCorreta = estadosCapitais[perguntaAtual];
 
-         // Objeto para armazenar o resultado da pergunta
+            // Objeto para armazenar o resultado da pergunta
             const resultado = {
                 pergunta: perguntaAtual,
                 resposta: respostaInput,
                 correta: respostaInput.toLowerCase() === respostaCorreta.toLowerCase()
             };
-             // Adiciona o resultado ao histórico de resultados
+            // Adiciona o resultado ao histórico de resultados
             const resultadosList = document.getElementById("resultados");
             const listItem = document.createElement("li");
             listItem.textContent = `${resultado.pergunta}: ${resultado.correta ? 'Correta' : 'Incorreta'}`;
             resultadosList.appendChild(listItem);
 
-        // Atualiza a pontuação dos jogadores e exibe a próxima pergunta
+            // Atualiza a pontuação dos jogadores e exibe a próxima pergunta
             if (resultado.correta) {
                 const indiceJogador = Math.floor(Math.random() * jogadores.length);
                 jogadores[indiceJogador].pontuacao++;
@@ -138,29 +138,35 @@
             document.getElementById("respostaInput").value = "";
             proximaPergunta();
         }
-    // Função para finalizar o jogo e exibir os resultados finais
+        // Função para finalizar o jogo e exibir os resultados finais
         function finalizarJogo() {
-            jogadores.sort(function(a, b) {
+            jogadores.sort(function (a, b) {
                 return b.pontuacao - a.pontuacao;
             });
-        
+
             const resultadosList = document.getElementById("resultados");
             resultadosList.innerHTML = "";
-        
+
             for (let i = 0; i < jogadores.length; i++) {
                 const listItem = document.createElement("li");
                 listItem.textContent = jogadores[i].nome + ": " + jogadores[i].pontuacao + " ponto(s)";
                 resultadosList.appendChild(listItem);
             }
         }
-    // Função para reiniciar o jogo
+        // Função para reiniciar o jogo
 
         function reiniciarJogo() {
             for (let i = 0; i < jogadores.length; i++) {
                 jogadores[i].pontuacao = 0;
             }
-            perguntas = Object.keys(estadosCapitais);
-            perguntaAtual = null;
+
+            const perguntas = [];
+            for (const estado in estadosCapitais) {
+                perguntas.push(estado);
+            }
+
+            // Reiniciar a pergunta atual e limpar a lista de resultados
+            let perguntaAtual = null;
             const resultadosList = document.getElementById("resultados");
             resultadosList.innerHTML = "";
         }
