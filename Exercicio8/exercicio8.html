@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Lista de dados (seleção de item) -->
+    <label for="idFrutas">Frutas:</label><br>
+    <input list="idFrutas">
+    <datalist id="idFrutas"></datalist>
+
+    <script>
+        var frutas = ["Tomate", "Morango", "Limão", "Abacaxi", "Pêra", "Uva"];
+        var datalist = document.getElementById('idFrutas');
+
+        for (var i = 0; i < frutas.length; i++) {
+            var option = document.createElement('option');
+            option.id = i;
+            option.innerText = frutas[i];
+            datalist.appendChild(option);
+        }
+    </script>
+</body>
+</html>
