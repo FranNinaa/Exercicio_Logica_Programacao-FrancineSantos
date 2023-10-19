@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <br><br>
+  </header>
+
+  <main>
+    <nav>
+    </nav>
+    <form id="cadastroAlunoForm">
+      <br><br>
+      <!-- form cadastro de alunos -->
+      <fieldset class="conjunto-campos">
+        <legend class="borda">Cadastro de Alunos</legend>
+        <br>
+        <label for="NomeAluno" class="etiqueta">Nome do Aluno:</label>
+        <input type="text" name="nmNomeAluno" id="idNomeAluno" autocomplete="on" required autofocus><br><br>
+
+        <label for="NomeMae" class="etiqueta">Nome da Mãe:</label>
+        <input type="text" name="nmNomeMae" id="idNomeMae" autocomplete="on" required><br><br>
+
+        <label for="NomePai" class="etiqueta">Nome do Pai:</label>
+        <input type="text" name="nmNomePai" id="idNomePai" autocomplete="on" required><br><br>
+
+        <label for="DataNascimento" class="etiqueta">Data de Nascimento:</label>
+        <input class="data" type="date" name="dtNascimento" min="2000-01-01" max="2017-12-30" required>
+        <span class="validity"></span><br><br>
+
+        <label for="endereco" class="etiqueta">Endereço:</label>
+        <input type="text" id="idEndereco" name="endereco" autocomplete="on" required><br><br>
+
+        <label for="Email" class="etiqueta">E-mail:</label>
+        <input type="email" name="nmEmail" id="idEmail" placeholder="seuemail@email.com" autocomplete="on" required><br><br>
+
+        <label for="Telefone" class="etiqueta">Telefone:</label>
+        <input type="telefone" name="nmTelefone" id="idTelefone" placeholder="(00) 1234-5678" pattern="\(\d{2}\) \d{4}-\d{4}" autocomplete="on" required><br><br>
+
+        <label for="Serie" class="etiqueta">Série:</label>
+        <input type="number" name="nmSerie" id="idSerie" min="1" max="9" autocomplete="on" required><br><br>
+
+         <!-- Radio button para gênero -->
+         <label class="etiqueta">Sexo:</label>
+         <input type="radio" id="radioFem" name="genero" value="Feminino">
+         <label for="radioFem">Feminino</label>
+         <input type="radio" id="radioMasc" name="genero" value="Masculino">
+         <label for="radioMasc">Masculino</label><br><br>
+      </fieldset>
+      <!-- form cadastro de notas -->
+      <br><br>
+      <fieldset class="conjunto-campos">
+        <legend class="borda">Cadastro de Notas</legend>
+
+        <label for="Nota1" class="etiqueta">Cadastre as notas do Aluno</label>
+        <br><br>
+        <label for="Nota1" class="etiqueta">Primeira nota:</label>
+        <input type="number" name="ntNota1" id="idNota1" required autofocus><br><br>
+
+        <label for="Nota2" class="etiqueta">Segunda nota:</label>
+        <input type="number" name="ntNota2" id="idNota2" required autofocus><br><br>
+
+        <label for="Nota3" class="etiqueta">Terceira nota:</label>
+        <input type="number" name="ntNota3" id="idNota3" required autofocus><br><br>
+
+        <label for="Nota4" class="etiqueta">Quarta nota:</label>
+        <input type="number" name="ntNota4" id="idNota4" required autofocus><br><br>
+
+        <section class="buttonCadastroAluno">
+          <input class="cadastroAluno" type="submit" value="Salvar Todos os Dados" id="salvarDadosBtn">
+        </section>
+        <br>
+      </fieldset>
+
+      <br><br>
+        <fieldset class="conjunto-campos">
+          <legend class="borda">Mostrar dados dos Alunos</legend>
+          <br><br> 
+
+          <div>
+            <output id="idSaida"></output>
+          </div>
+
+          <section class="buttonCadastroAluno">
+            <input class="cadastroAluno" type="submit" value="Consultar Alunos" id="consultarAlunosBtn">
+          </section>
+          <br>
+        </fieldset>
+
+    </form>
+
+    <script>
+      // Classe Aluno para representar um aluno
+      class Aluno {
+        constructor(nome, nomeMae, nomePai, endereco, telefonePai, notas) {
+          this.nome = nome;
+          this.nomeMae = nomeMae;
+          this.nomePai = nomePai;
+          this.endereco = endereco;
+          this.telefonePai = telefonePai;
+          this.notas = notas;
+        }
+
+        calcularMedia() {
+          let totalNotas = this.notas.reduce((acc, nota) => acc + nota, 0);
+          return (totalNotas / this.notas.length).toFixed(2);
+        }
+      }
+
+      // Array para armazenar os alunos
+      const alunos = [];
+
+      // Evento de envio do formulário
+      document.getElementById('cadastroAlunoForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Coletando dados do formulário
+        const nome = document.getElementById('idNomeAluno').value;
+        const nomeMae = document.getElementById('idNomeMae').value;
+        const nomePai = document.getElementById('idNomePai').value;
+        const endereco = document.getElementById('idEndereco').value;
+        const telefonePai = document.getElementById('idTelefone').value;
+        const nota1 = parseFloat(document.getElementById('idNota1').value);
+        const nota2 = parseFloat(document.getElementById('idNota2').value);
+        const nota3 = parseFloat(document.getElementById('idNota3').value);
+        const nota4 = parseFloat(document.getElementById('idNota4').value);
+
+        // Criando um objeto Aluno
+        const aluno = new Aluno(nome, nomeMae, nomePai, endereco, telefonePai, [nota1, nota2, nota3, nota4]);
+
+        // Adicionando o aluno ao array de alunos
+        alunos.push(aluno);
+
+        // Limpando o formulário
+        document.getElementById('cadastroAlunoForm').reset();
+      });
+
+      // Evento para consultar alunos
+      document.getElementById('consultarAlunosBtn').addEventListener('click', function() {
+        let output = '';
+
+        // Exibindo os dados dos alunos e suas médias
+        alunos.forEach(function(aluno) {
+          output += `Aluno: ${aluno.nome},<br>
+                     Mãe: ${aluno.nomeMae},<br>
+                     Pai: ${aluno.nomePai},<br>
+                     Endereço: ${aluno.endereco},<br>
+                     Telefone do Pai: ${aluno.telefonePai},<br>
+                     Média Final: ${aluno.calcularMedia()}<br><br>`;
+        });
+
+        // Exibindo a saída na página
+        document.getElementById('idSaida').innerHTML = output;
+      });
+
+      // Nesta versão, os principais aprimoramentos incluem:
+      /*
+        - A criação de uma classe Aluno que encapsula os atributos e métodos relacionados a um aluno.
+        - A utilização de eventos de clique para salvar dados de alunos e consultar alunos em vez de funções globais.
+        - O uso de métodos da classe Aluno para calcular a média das notas.
+        Isso torna o código mais organizado, orientado a objetos e fácil de entender. Além disso, ele separa claramente
+         as responsabilidades de criar, armazenar e exibir dados dos alunos.
+      */
+    </script>
+  </main>
+</body>
+</html>
+
