@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Link para a fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+
+    </style>
 </head>
 
-<body>
+<body class="ListaFrutas">
     <!-- Lista de dados (seleção de item) -->
-    <label for="idFrutas">Frutas:</label><br>
+    <label for="idFrutas">Lista de frutas:</label><br>
     <input list="idFrutas">
     <datalist id="idFrutas"></datalist>
 
     <script>
         var frutas = ["Tomate", "Morango", "Limão", "Abacaxi", "Pêra", "Uva"];
+
         var datalist = document.getElementById('idFrutas');
 
         for (var i = 0; i < frutas.length; i++) {
@@ -21,6 +30,9 @@
             option.id = i;
             option.innerText = frutas[i];
             datalist.appendChild(option);
+
+              
+              console.log(frutas[i]);
         }
     </script>
 </body>

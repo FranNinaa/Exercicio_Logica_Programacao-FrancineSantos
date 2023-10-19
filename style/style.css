@@ -238,7 +238,27 @@
   .buttonContato:hover {
     background-color: var(--corSelect);
   }
-  
+
+   /* lista de frutas */
+   .ListaFrutas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+   
+}
+
+#idFrutas {
+    width: 100%;
+    max-width: 400px; 
+    padding: 5px;
+    font-size: 18px;
+}
   
   /* Estilo para o rodapé */
   footer {
@@ -246,4 +266,6 @@
     margin-top: 20px;
     padding-top: 10px;
     border-top: 3px solid var(--corBorda);
+
   }
+
