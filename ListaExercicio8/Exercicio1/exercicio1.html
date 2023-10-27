@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista Exercicio 8</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container mt-5">
+        <!-- Lista de dados (seleção de item) -->
+        <label for="exampleDataList" class="form-label">Frutas</label>
+        <input  class="form-control" list="datalistOptions" id="exampleDataList">
+        <datalist id="datalistOptions"></datalist>
+    </div>
+    </div>
+    <script>
+        var frutas = ["Tomate", "Morango", "Limão", "Abacaxi", "Pêra", "Uva"];
+        var datalist = document.getElementById("datalistOptions");
+
+        // Use map para criar as opções
+        frutas.map(function(fruta, index) {
+            var option = document.createElement("option");
+            option.value = fruta; // Use o nome da fruta como valor
+            option.innerText = index.toString(); // Use a posição como texto interno
+            datalist.appendChild(option);
+
+            console.log(frutas[index]);
+        });
+
+        
+    </script>
+
+    <!-- Adicione o link para o JavaScript do Bootstrap (popper.js incluído) e o Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+    .integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
