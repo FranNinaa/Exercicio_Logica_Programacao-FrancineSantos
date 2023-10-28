@@ -13,7 +13,6 @@
     <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <!-- Área de Cabeçalho -->
     <header>
@@ -98,7 +97,7 @@
         }
         
         function mostrarMenoresDeIdade() {
-            const quantidadePessoas = 9; // Número de pessoas cadastradas
+            const quantidadePessoas = 5; // Número de pessoas cadastradas
             const idades = Array.from({ length: quantidadePessoas }, (_, i) => parseInt(document.getElementById(`idIdade${i + 1}`).value));
             const nomes = Array.from({ length: quantidadePessoas }, (_, i) => document.getElementById(`idNome${i + 1}`).value);
 
