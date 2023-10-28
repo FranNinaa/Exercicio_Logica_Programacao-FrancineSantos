@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio</title>
+    <!-- Incluindo os estilos do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Meus próprios estilos -->
+    <link rel="stylesheet" type="text/css" href="../../style/style2.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <!-- Estilos de fonte do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Ordenação de Números</h1>
+    </header>
+
+    <main>
+        <form>
+            <!-- Descrição do exercício -->
+            <label class="form-floating mb-3" for="exe3">
+                Refatore o código abaixo, corrigindo o método de ordenação dos botões "Ordem Crescente" e "Ordem Decrescente"
+                de forma que a sequência numérica do vetor num[] seja ordenada corretamente em ordem crescente e decrescente, respectivamente.
+            </label>
+            <br><br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Digite os números separados por vírgula</span>
+                <input type="text" class="form-control" id="numerosInput" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <section>
+                <input type="button" class="btn btn-outline-primary" value="Ordem Crescente" onclick="ordemCrescente()">
+            </section>
+            <br>
+            <section>
+                <input type="button" class="btn btn-outline-primary" value="Ordem Decrescente" onclick="ordemDecrescente()">
+            </section>
+            <br>
+            <div>
+                <textarea class="form-control" id="idSaida" name="nmSaida" placeholder="Visualização das Ordens"></textarea>
+            </div>
+            <br>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <script>
+        function parseNumbers() {
+            const numerosInput = document.getElementById("numerosInput").value;
+            const numerosArray = numerosInput.split(',').map(num => parseInt(num.trim()));
+            return numerosArray;
+        }
+
+        function ordemCrescente() {
+            const numerosArray = parseNumbers();
+            numerosArray.sort((a, b) => a - b);
+            document.getElementById("idSaida").value = "Números em ordem crescente: " + numerosArray.join(', ');
+        }
+
+        function ordemDecrescente() {
+            const numerosArray = parseNumbers();
+            numerosArray.sort((a, b) => b - a);
+            document.getElementById("idSaida").value = "Números em ordem decrescente: " + numerosArray.join(', ');
+        }
+    </script>
+</body>
+
+</html>
