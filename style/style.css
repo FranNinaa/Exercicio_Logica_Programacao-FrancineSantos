@@ -131,10 +131,7 @@
   
   
   /* estilo da opção radio button genero*/
-  #radioFem,
-  #radioMasc {
-    display: none;
-  }
+
   input[type="radio"]+label {
     background-color: var(--corNeutro2);
     border: 1px solid var(--corBorda);

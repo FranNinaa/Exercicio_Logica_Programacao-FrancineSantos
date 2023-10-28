@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../style/style2.css">
+    <link rel="icon" href="../../assets/cerebro.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<style>
+   
+</style>
+
+<body>
+    <header>
+        <h1>Lista 8 - Exercício 3</h1>
+    </header>
+
+    <main>
+        <form>
+            <fieldset class="borda">
+                <label for="exe3">
+                    Usando os métodos filter(), map() e reduce(),
+                    no lugar das estruturas de repetição tradicionais, para processar os vetores
+                    nomes[], sexos[] e salários[] a fim de mostrar uma listagem contendo apenas os
+                    dados das funcionárias mulheres que ganham mais de R$5 mil.
+                </label>
+                <br><br>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Nome do Funcionário(a)</span>
+                    <input type="text" class="form-control" id="nomeInput" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default">
+                </div>
+
+                <label for="Genero" class="etiqueta">Sexo:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="fem" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Feminino
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="masc">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Masculino
+                    </label>
+                </div>
+                <br>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Digite o Salario do Funcionario(a)</span>
+                    <input type="text" class="form-control" id="salarioInput" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default">
+                </div>
+
+                <button class="btn btn-outline-primary" type="button" onclick="adicionarCamposDeDados()">Adicionar campos de dados</button>
+                <br><br>
+
+                <section>
+                    <input class="btn btn-outline-primary" type="button" value="Mostrar Funcionárias com Salário > 5000" onclick="mostrarFuncionarias()">
+                </section>
+                <br>
+                <div>
+                    <textarea class="form-control" id="idSaida" name="nmSaida" placeholder="Visualização das Funcionárias"></textarea>
+                </div>
+                <br>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Estudos Entra21.<br>Autora: Francine dos Santos.</p>
+    </footer>
+
+    <script>
+        // Vetores para armazenar os dados
+        let dados = [];
+
+        function adicionarCamposDeDados() {
+            // Obter os valores dos campos de nome, sexo e salário
+            let nomeInput = document.getElementById("nomeInput");
+            let sexoInputs = document.getElementsByName("sexo");
+            let salarioInput = document.getElementById("salarioInput");
+
+            let nome = nomeInput.value;
+
+            let sexo;
+            // Iterar pelos inputs de sexo para encontrar o selecionado
+            for (let i = 0; i < sexoInputs.length; i++) {
+                if (sexoInputs[i].checked) {
+                    sexo = sexoInputs[i].value;
+                    break;
+                }
+            }
+
+            let salario = parseFloat(salarioInput.value);
+
+            // Limpar os campos de entrada
+            nomeInput.value = "";
+            for (let i = 0; i < sexoInputs.length; i++) {
+                sexoInputs[i].checked = false;
+            }
+            salarioInput.value = "";
+
+            // Validar e adicionar os dados ao vetor
+            if (nome && (sexo === 'fem' || sexo === 'masc') && !isNaN(salario)) {
+                dados.push({ nome, sexo, salario });
+            } else {
+                alert("Dados inválidos. Certifique-se de inserir valores corretos.");
+            }
+        }
+
+        function mostrarFuncionarias() {
+            // Filtra os funcionários que são do sexo feminino e têm salário maior que 5000
+            const funcionarias = dados.filter(funcionario => funcionario.sexo === 'fem' && funcionario.salario > 5.000);
+
+            // Mapeia os objetos funcionárias para uma representação de string formatada
+            const saida = funcionarias.map(funcionario => `\nNome: ${funcionario.nome} - Sexo: Feminino - Salário: R$ ${funcionario.salario.toFixed(3)}`).join('\n');
+
+            // Define o conteúdo da saída no textarea
+            document.getElementById("idSaida").value = saida;
+        }
+    </script>
+    <!-- Adicione o link para o JavaScript do Bootstrap (popper.js incluído) e o Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
